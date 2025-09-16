@@ -1,0 +1,4 @@
+{ ... }:
+{
+  imports = [ ./suitecloud.nix ];
+}
