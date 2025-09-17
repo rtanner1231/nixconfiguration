@@ -44,5 +44,13 @@
           inputs.nix-sweep.nixosModules.default
         ];
       };
+      nixosConfigurations.kde = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; }; # Pass inputs to all modules
+        modules = [
+          ./profiles/kde
+          inputs.nix-sweep.nixosModules.default
+        ];
+      };
     };
 }
