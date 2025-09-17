@@ -28,5 +28,13 @@
           inputs.nix-sweep.nixosModules.default
         ];
       };
+      nixosConfigurations.gnome = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; }; # Pass inputs to all modules
+        modules = [
+          ./profiles/gnome
+          inputs.nix-sweep.nixosModules.default
+        ];
+      };
     };
 }
