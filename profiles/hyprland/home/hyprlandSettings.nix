@@ -56,6 +56,7 @@
         "$mod, E, exec, dolphin" # Example file manager
         "$mod, D, exec, rofi -show drun"
         "$mod, L, exec, swaylock"
+        "$mod, P, exec, ~/scripts/rofiprojects.sh"
 
         # Move focus
         "$mod, left, movefocus, l"
