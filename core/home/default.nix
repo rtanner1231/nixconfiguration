@@ -38,6 +38,7 @@
     baobab
     slack
     btop
+    vivaldi
   ];
 
   fonts.fontconfig.enable = true;
