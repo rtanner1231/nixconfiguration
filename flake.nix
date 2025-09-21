@@ -19,38 +19,24 @@
       nixpkgs,
       ...
     }@inputs:
+    let
+      system = "x86_64-linux";
+      makeSystem =
+        profile:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; }; # Pass inputs to all modules
+          modules = [
+            profile
+            inputs.nix-sweep.nixosModules.default
+          ];
+        };
+    in
     {
-      nixosConfigurations.hyprland = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; }; # Pass inputs to all modules
-        modules = [
-          ./profiles/hyprland
-          inputs.nix-sweep.nixosModules.default
-        ];
-      };
-      nixosConfigurations.gnome = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; }; # Pass inputs to all modules
-        modules = [
-          ./profiles/gnome
-          inputs.nix-sweep.nixosModules.default
-        ];
-      };
-      nixosConfigurations.cinnamon = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; }; # Pass inputs to all modules
-        modules = [
-          ./profiles/cinnamon
-          inputs.nix-sweep.nixosModules.default
-        ];
-      };
-      nixosConfigurations.kde = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; }; # Pass inputs to all modules
-        modules = [
-          ./profiles/kde
-          inputs.nix-sweep.nixosModules.default
-        ];
-      };
+      nixosConfigurations.hyprland = makeSystem ./profiles/hyprland;
+      nixosConfigurations.gnome = makeSystem ./profiles/gnome;
+      nixosConfigurations.cinnamon = makeSystem ./profiles/cinnamon;
+      nixosConfigurations.kde = makeSystem ./profiles/kde;
+
     };
 }
