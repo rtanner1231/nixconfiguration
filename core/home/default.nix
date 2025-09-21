@@ -39,6 +39,7 @@
     slack
     btop
     vivaldi
+    opencode
   ];
 
   fonts.fontconfig.enable = true;
