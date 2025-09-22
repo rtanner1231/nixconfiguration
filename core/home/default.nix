@@ -1,8 +1,11 @@
 {
   pkgs,
+  inputs,
   ...
 }:
-
+let
+  system = "x86_64-linux";
+in
 {
   # Import the correct home-manager module based on the desktop choice
   imports = [
@@ -40,6 +43,7 @@
     btop
     vivaldi
     opencode
+    inputs.zen-browser.packages."${system}".default
   ];
 
   fonts.fontconfig.enable = true;
