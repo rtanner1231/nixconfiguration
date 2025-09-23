@@ -1,0 +1,244 @@
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            options "grp:alt_shift_toggle"
+        }
+        numlock
+    }
+    touchpad { tap; }
+    
+    warp-mouse-to-focus
+    workspace-auto-back-and-forth
+}
+
+layout {
+    gaps 10
+
+    center-focused-column "never"
+
+    //(Mod+R) toggles between.
+    preset-column-widths {
+        proportion 0.25
+        proportion 0.5
+        proportion 0.75
+        proportion 1.0
+    }
+
+    preset-window-heights {
+        proportion 0.25
+        proportion 0.5
+        proportion 0.75
+        proportion 1.0
+    }
+
+    default-column-width { proportion 0.5; }
+    focus-ring { off; }
+
+    border {
+        width 1.5
+        active-color "#0313fc"
+        inactive-color "#7a8570"
+
+        urgent-color "#9b0000"
+    }
+
+    // shadow {
+    //     on
+    //     draw-behind-window true
+    //     softness 0
+    //     spread 1
+    //     offset x=1 y=1
+    //     color "#2d3228"
+    //     inactive-color "#2d3228"
+    // }
+}
+
+workspace "media" 
+
+window-rule {
+    match at-startup=true app-id=r#"thunderbird"#
+    match at-startup=true app-id=r#"Slack"#
+    open-on-workspace "media"
+    open-maximized true
+}
+
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+}
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+window-rule {
+    match is-focused=true app-id=r#"com.mitchellh.ghostty"#
+    opacity 0.9
+}
+
+window-rule {
+    match is-focused=false app-id=r#"com.mitchellh.ghostty"#
+    opacity 0.7
+}
+
+layer-rule {
+    match namespace="waybar"
+    match at-startup=true
+
+    shadow {
+        on
+        draw-behind-window true
+        softness 0
+        spread 0.5
+        offset x=0.5 y=0.5
+        color "#2d3228"
+        inactive-color "#2d3228"
+    }
+}
+layer-rule {
+    match namespace="^launcher$"
+
+    shadow {
+        on
+        draw-behind-window true
+        softness 0
+        spread 1
+        offset x=1 y=1
+        color "#2d3228"
+        inactive-color "#2d3228"
+    }
+}
+
+prefer-no-csd
+//animations { off; }
+hotkey-overlay { skip-at-startup; }
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+spawn-at-startup "waybar"
+spawn-at-startup "thunderbird"
+spawn-at-startup "slack"
+// spawn-at-startup "swww-daemon"
+// spawn-at-startup "swww img ~/.mine/dots/wallpapers/1.png"
+// spawn-at-startup "systemctl --user start hyprpolkitagent"
+
+binds {
+
+    Mod+1 {focus-workspace 1;}
+    Mod+2 {focus-workspace 2;}
+    Mod+3 {focus-workspace 3;}
+    Mod+4 {focus-workspace 4;}
+    Mod+5 {focus-workspace 5;}
+    Mod+6 {focus-workspace 6;}
+    Mod+7 {focus-workspace 7;}
+    Mod+8 {focus-workspace 8;}
+    Mod+9 {focus-workspace 9;}
+    Mod+0 {focus-workspace 10;}
+
+    Mod+Shift+1 {move-window-to-workspace 1;}
+    Mod+Shift+2 {move-window-to-workspace 2;}
+    Mod+Shift+3 {move-window-to-workspace 3;}
+    Mod+Shift+4 {move-window-to-workspace 4;}
+    Mod+Shift+5 {move-window-to-workspace 5;}
+    Mod+Shift+6 {move-window-to-workspace 6;}
+    Mod+Shift+7 {move-window-to-workspace 7;}
+    Mod+Shift+8 {move-window-to-workspace 8;}
+    Mod+Shift+9 {move-window-to-workspace 9;}
+    Mod+Shift+0 {move-window-to-workspace 10;}
+
+    Mod+T {focus-workspace "media";}
+
+    Mod+E { spawn "nautilus"; }
+    Mod+U { spawn "ghostty"; }
+
+    Alt+F { spawn "firefox"; }
+
+    Mod+D { spawn "rofi-launcher"; }
+
+    Mod+O repeat=false { toggle-overview; }
+
+    Mod+Q { close-window; }
+    Mod+Shift+Q { quit; }
+
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-window-down; }
+    Mod+K     { focus-window-up; }
+    Mod+L     { focus-column-right; }
+
+    Mod+Shift+H     { move-column-left; }
+    Mod+Shift+J     { move-window-down; }
+    Mod+Shift+K     { move-window-up; }
+    Mod+Shift+L     { move-column-right; }
+
+    Mod+Ctrl+J     { focus-workspace-down; }
+    Mod+Ctrl+K     { focus-workspace-up; }
+    Mod+Ctrl+H     { focus-monitor-left; }
+    Mod+Ctrl+L     { focus-monitor-right; }
+
+    Mod+Alt+J     { move-workspace-down; }
+    Mod+Alt+K     { move-workspace-up; }
+    Mod+Alt+H     { move-workspace-to-monitor-left; }
+    Mod+Alt+L     { move-workspace-to-monitor-right; }
+
+    Mod+Ctrl+Z      {spawn "rofi-powermenu";}
+
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    // Consume one window from the right to the bottom of the focused column.
+    Mod+Comma  { consume-window-into-column; }
+    // Expel the bottom window from the focused column to the right.
+    Mod+Period { expel-window-from-column; }
+
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+Ctrl+F { expand-column-to-available-width; }
+
+    Mod+C { center-column; }
+    Mod+Ctrl+C { center-visible-columns; }
+
+    Mod+Ctrl+Shift+H { set-column-width "-10%"; }
+    Mod+Ctrl+Shift+L { set-column-width "+10%"; }
+    Mod+Ctrl+Shift+J { set-window-height "-10%"; }
+    Mod+Ctrl+Shift+K { set-window-height "+10%"; }
+
+    Mod+V       { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+    Shift+Mod+S { screenshot; }
+    Alt+Mod+S { screenshot-screen; }
+    Ctrl+Mod+S { screenshot-window; }
+
+    // Applications such as remote-desktop clients and software KVM switches may
+    // request that niri stops processing the keyboard shortcuts defined here
+    // so they may, for example, forward the key presses as-is to a remote machine.
+    // It's a good idea to bind an escape hatch to toggle the inhibitor,
+    // so a buggy application can't hold your session hostage.
+    //
+    // The allow-inhibiting=false property can be applied to other binds as well,
+    // which ensures niri always processes them, even when an inhibitor is active.
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+
+
+    // Powers off the monitors.
+    Mod+Shift+P { power-off-monitors; }
+
+    XF86MonBrightnessUp     allow-when-locked=true { spawn "brightnessctl" "set" "5%+"; }
+    XF86MonBrightnessDown     allow-when-locked=true { spawn "brightnessctl" "set" "5%-"; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+}

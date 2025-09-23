@@ -23,21 +23,28 @@
     let
       system = "x86_64-linux";
       makeSystem =
-        profile:
+        {
+          profile,
+          additionalModules ? [ ],
+        }:
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; }; # Pass inputs to all modules
           modules = [
             profile
             inputs.nix-sweep.nixosModules.default
-          ];
+          ]
+          ++ additionalModules;
         };
     in
     {
-      nixosConfigurations.hyprland = makeSystem ./profiles/hyprland;
-      nixosConfigurations.gnome = makeSystem ./profiles/gnome;
-      nixosConfigurations.cinnamon = makeSystem ./profiles/cinnamon;
-      nixosConfigurations.kde = makeSystem ./profiles/kde;
+      nixosConfigurations.hyprland = makeSystem { profile = ./profiles/hyprland; };
+      nixosConfigurations.gnome = makeSystem { profile = ./profiles/gnome; };
+      nixosConfigurations.cinnamon = makeSystem { profile = ./profiles/cinnamon; };
+      nixosConfigurations.kde = makeSystem { profile = ./profiles/kde; };
+      nixosConfigurations.niri = makeSystem {
+        profile = ./profiles/niri;
+      };
 
     };
 }
