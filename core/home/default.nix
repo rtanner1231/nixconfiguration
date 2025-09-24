@@ -44,6 +44,7 @@ in
     vivaldi
     opencode
     inputs.zen-browser.packages."${system}".default
+    postman
   ];
 
   fonts.fontconfig.enable = true;
