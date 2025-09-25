@@ -1,5 +1,7 @@
 {
   inputs,
+  lib,
+  wm,
   ...
 }:
 let
@@ -8,9 +10,10 @@ in
 {
   imports = [
     (userModule {
-      inherit inputs;
+      inherit inputs lib;
       username = "rick";
-      homeFile = ./home.nix;
+      wmHome = ../../../wms/${wm}/home;
+      profileHomeFile = ./wms/${wm};
     })
   ];
 }

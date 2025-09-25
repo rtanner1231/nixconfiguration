@@ -1,6 +1,5 @@
 {
   description = "System Flake";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
@@ -21,30 +20,49 @@
       ...
     }@inputs:
     let
+      wms = [
+        "gnome"
+        "cinnamon"
+        "kde"
+        "hyprland"
+        "niri"
+      ];
+      profiles = [
+        {
+          name = "l2";
+          path = ./profiles/l2;
+        }
+      ];
       system = "x86_64-linux";
       makeSystem =
         {
           profile,
           additionalModules ? [ ],
+          wm,
         }:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs; }; # Pass inputs to all modules
+          specialArgs = {
+            inherit wm inputs profile;
+          };
           modules = [
-            profile
+            profile.path
             inputs.nix-sweep.nixosModules.default
           ]
           ++ additionalModules;
         };
+      allCombinations = nixpkgs.lib.concatMap (
+        profile:
+        builtins.map (wm: {
+          name = "${profile.name}-${wm}";
+          value = makeSystem {
+            profile = profile;
+            wm = wm;
+          };
+        }) wms
+      ) profiles;
     in
     {
-      nixosConfigurations.hyprland = makeSystem { profile = ./profiles/hyprland; };
-      nixosConfigurations.gnome = makeSystem { profile = ./profiles/gnome; };
-      nixosConfigurations.cinnamon = makeSystem { profile = ./profiles/cinnamon; };
-      nixosConfigurations.kde = makeSystem { profile = ./profiles/kde; };
-      nixosConfigurations.niri = makeSystem {
-        profile = ./profiles/niri;
-      };
-
+      nixosConfigurations = nixpkgs.lib.listToAttrs allCombinations;
     };
 }

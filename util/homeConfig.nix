@@ -1,7 +1,9 @@
 {
   inputs,
+  lib,
   username,
-  homeFile,
+  wmHome,
+  profileHomeFile,
 }:
 
 {
@@ -15,7 +17,7 @@
     extraSpecialArgs = { inherit inputs; };
 
     users."${username}" = {
-      imports = [ homeFile ];
+      imports = [ wmHome ] ++ lib.optional (builtins.pathExists profileHomeFile) profileHomeFile;
       home = {
         inherit username;
         homeDirectory = "/home/${username}";
