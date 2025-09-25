@@ -4,10 +4,10 @@
     ./packages.nix
     ./niriSettings.nix
     ./waybar
-    ./hyprlock
+    ../../../common/wayland/hyprlock
+    ../../../common/wayland/rofi
+    ../../../common/wayland/hyprpaper
     ./hypridle
-    ./rofi
     ../../../core/home
-    ./hyprpaper
   ];
 }

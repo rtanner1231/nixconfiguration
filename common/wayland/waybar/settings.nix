@@ -28,28 +28,45 @@ in
     margin-bottom = 0;
     margin-left = 0;
     margin-right = 0;
-    modules-left = [
-      "custom/launcher"
-      "hyprland/workspaces"
-      "tray"
-    ];
+    # modules-left = [
+    #   "custom/launcher"
+    #   "niri/workspaces"
+    #   #"niri/window"
+    # ];
     modules-center = [ "clock" ];
     modules-right = [
-      "cpu"
+      #"cpu"
       "memory"
-      "disk"
+      #"disk"
       "pulseaudio"
       "network"
       "battery"
+      "tray"
       "custom/notification"
     ];
+
+    "niri/workspaces" = {
+      "on-click" = "activate";
+      "all-outputs" = false;
+      "disable-scroll" = true;
+      "active-only" = false;
+      "format" = "{icon}";
+      "format-icons" = {
+        sort-by-number = true;
+      };
+    };
+
+    "niri/window" = {
+      "icon" = true;
+      "tooltip" = false;
+    };
     clock = {
       calendar = {
         format = {
           today = "<span color='#98971A'><b>{}</b></span>";
         };
       };
-      format = "  {:%H:%M}";
+      format = "  {:%I:%M %p}";
       tooltip = "true";
       tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
       format-alt = "  {:%d/%m}";

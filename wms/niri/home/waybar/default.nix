@@ -1,8 +1,11 @@
 { ... }:
 {
   imports = [
-    ./settings.nix
-    ./waybar.nix
-    ./style.nix
+    ../../../../common/wayland/waybar
   ];
+  programs.waybar.settings.mainBar = {
+    modules-left = [
+      "niri/workspaces"
+    ];
+  };
 }
