@@ -1,5 +1,6 @@
 {
   inputs,
+  pkgs,
   lib,
   wm,
   ...
@@ -10,7 +11,7 @@ in
 {
   imports = [
     (userModule {
-      inherit inputs lib;
+      inherit inputs lib pkgs;
       username = "rick";
       wmHome = ../../../wms/${wm}/home;
       profileHomeFile = ./wms/${wm};

@@ -1,6 +1,7 @@
 {
   inputs,
   lib,
+  pkgs,
   username,
   wmHome,
   profileHomeFile,
@@ -14,10 +15,17 @@
     useGlobalPkgs = true;
     backupFileExtension = "hmbackup";
 
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {
+      inherit inputs;
+      suitecloud = inputs.suitecloud;
+    };
 
     users."${username}" = {
-      imports = [ wmHome ] ++ lib.optional (builtins.pathExists profileHomeFile) profileHomeFile;
+      imports = [
+        wmHome
+        inputs.suitecloud.homeManagerModules.${pkgs.system}.default
+      ]
+      ++ lib.optional (builtins.pathExists profileHomeFile) profileHomeFile;
       home = {
         inherit username;
         homeDirectory = "/home/${username}";

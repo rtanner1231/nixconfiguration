@@ -13,7 +13,7 @@ in
     ./git.nix
     ./terminal.nix
     ./nodejs.nix
-    ./suitecloud
+    #./suitecloud
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
