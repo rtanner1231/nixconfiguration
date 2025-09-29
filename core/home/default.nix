@@ -45,6 +45,7 @@ in
     opencode
     inputs.zen-browser.packages."${system}".default
     postman
+    libreoffice
   ];
 
   fonts.fontconfig.enable = true;
