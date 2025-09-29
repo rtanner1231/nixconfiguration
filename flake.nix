@@ -15,7 +15,7 @@
       url = "github:rfaulhaber/sfdx-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    suitecloud.url = "path:./suitecloudflake";
+    suitecloud.url = "github:rtanner1231/suitecloud-nix";
   };
 
   outputs =

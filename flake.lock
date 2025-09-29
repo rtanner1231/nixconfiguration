@@ -233,14 +233,18 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "path": "./suitecloudflake",
-        "type": "path"
+        "lastModified": 1759178451,
+        "narHash": "sha256-H82DO8/Y7u2sXUjHG6Ok5qZzfT3lDskj0cHqFAHwEN8=",
+        "owner": "rtanner1231",
+        "repo": "suitecloud-nix",
+        "rev": "d6e39052173223024ea5a598b5d2b2f090c20ee9",
+        "type": "github"
       },
       "original": {
-        "path": "./suitecloudflake",
-        "type": "path"
-      },
-      "parent": []
+        "owner": "rtanner1231",
+        "repo": "suitecloud-nix",
+        "type": "github"
+      }
     },
     "systems": {
       "locked": {
