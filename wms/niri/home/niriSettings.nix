@@ -5,7 +5,10 @@
   ...
 }:
 {
-  xdg.configFile."niri/config.kdl".source = ./config/config.kdl;
+  xdg.configFile."niri/config.kdl" = {
+    force = true;
+    source = ./config/config.kdl;
+  };
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {

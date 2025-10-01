@@ -55,6 +55,7 @@
         "$mod, M, exit,"
         "$mod, E, exec, dolphin" # Example file manager
         "$mod, D, exec, rofi-launcher"
+        "$mod CTRL, P, exec, rofi-switchwm"
         #"$mod, L, exec, swaylock"
         "$mod, P, exec, ~/scripts/rofiprojects.sh"
 

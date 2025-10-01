@@ -14,6 +14,8 @@
     ./services.nix
     ./packages.nix
     ./settings.nix
+    ./env.nix
+    ./sudo.nix
   ];
 
 }

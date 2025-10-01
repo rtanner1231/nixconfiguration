@@ -187,6 +187,8 @@ binds {
     Mod+Alt+H     { move-workspace-to-monitor-left; }
     Mod+Alt+L     { move-workspace-to-monitor-right; }
 
+    Mod+Ctrl+P     { spawn "rofi-switchwm";}
+
     Mod+Ctrl+Z      {spawn "rofi-powermenu";}
 
     Mod+BracketLeft  { consume-or-expel-window-left; }

@@ -5,7 +5,6 @@
 {
   home.packages = with pkgs; [
     waybar # Status bar
-    rofi # App launcher
     swaynotificationcenter # Notification daemon
     nautilus # File manager
     cliphist
@@ -18,6 +17,7 @@
     wl-clipboard
     wl-clip-persist
     wl-color-picker
+    alacritty
   ];
 
 }
