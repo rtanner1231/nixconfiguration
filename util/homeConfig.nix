@@ -3,6 +3,7 @@
   lib,
   pkgs,
   username,
+  profile,
   wmHome,
   profileHomeFile,
 }:
@@ -16,7 +17,7 @@
     backupFileExtension = "hmbackup";
 
     extraSpecialArgs = {
-      inherit inputs;
+      inherit inputs profile;
       suitecloud = inputs.suitecloud;
     };
 

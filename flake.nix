@@ -36,6 +36,10 @@
         {
           name = "l2";
           path = ./profiles/l2;
+          git = {
+            userName = "Richard Tanner";
+            userEmail = "rtanner@myron.com";
+          };
         }
       ];
       system = "x86_64-linux";

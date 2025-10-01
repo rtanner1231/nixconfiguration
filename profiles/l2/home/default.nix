@@ -3,6 +3,7 @@
   pkgs,
   lib,
   wm,
+  profile,
   ...
 }:
 let
@@ -11,7 +12,12 @@ in
 {
   imports = [
     (userModule {
-      inherit inputs lib pkgs;
+      inherit
+        inputs
+        lib
+        pkgs
+        profile
+        ;
       username = "rick";
       wmHome = ../../../wms/${wm}/home;
       profileHomeFile = ./wms/${wm};
