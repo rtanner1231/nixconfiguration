@@ -4,18 +4,17 @@ let
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 in
 {
+
+  imports = [
+    ./tmux.nix
+  ];
+
   home.packages = with pkgs; [
     ghostty
-    tmux
     fish
     starship
     zoxide
   ];
-
-  xdg.configFile."tmux" = {
-    source = create_symlink "${dotfiles}/.config/tmux";
-    recursive = true;
-  };
 
   xdg.configFile."ghostty" = {
     source = create_symlink "${dotfiles}/.config/ghostty";
