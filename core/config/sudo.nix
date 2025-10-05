@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, profile, ... }:
 
 {
 
@@ -6,7 +6,7 @@
   # allow nixos rebuilt to be run without password
   security.sudo.extraRules = [
     {
-      users = [ "rick" ];
+      users = [ profile.user ];
       commands = [
         {
           command = "${pkgs.nixos-rebuild}/bin/nixos-rebuild";

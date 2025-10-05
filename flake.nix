@@ -36,6 +36,7 @@
         {
           name = "l2";
           path = ./profiles/l2;
+          user = "rick";
           git = {
             userName = "Richard Tanner";
             userEmail = "rtanner@myron.com";

@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  profile,
   ...
 }:
 let
@@ -17,8 +18,8 @@ in
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "rick";
-  home.homeDirectory = "/home/rick";
+  home.username = profile.user;
+  home.homeDirectory = "/home/${profile.user}";
 
   # Basic user packages that are always installed
   home.packages = with pkgs; [

@@ -18,7 +18,6 @@ in
         pkgs
         profile
         ;
-      username = "rick";
       wmHome = ../../../wms/${wm}/home;
       profileHomeFile = ./wms/${wm};
     })
