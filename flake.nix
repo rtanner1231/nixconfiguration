@@ -31,6 +31,7 @@
         "kde"
         "hyprland"
         "niri"
+        "cosmic"
       ];
       profiles = [
         {
