@@ -47,6 +47,7 @@ in
     inputs.zen-browser.packages."${system}".default
     postman
     libreoffice
+    soapui
   ];
 
   fonts.fontconfig.enable = true;
