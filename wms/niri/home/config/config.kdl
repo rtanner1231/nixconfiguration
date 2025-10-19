@@ -1,3 +1,5 @@
+
+
 input {
     keyboard {
         xkb {
@@ -231,7 +233,9 @@ binds {
     // which ensures niri always processes them, even when an inhibitor is active.
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
-
+    Mod+B {
+        spawn-sh "rofi -show clipboard -modi 'clipboard:~/.config/rofi/scripts/cliphist-rofi-img' -show-icons -theme '~/.config/rofi/themes/rofi-cliphist-theme.rasi'";
+    }
 
     // Powers off the monitors.
     Mod+Shift+P { power-off-monitors; }

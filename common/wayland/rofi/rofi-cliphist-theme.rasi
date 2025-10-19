@@ -1,0 +1,140 @@
+/*
+ * Rofi theme for cliphist (Balanced Horizontal Layout)
+ * Inspired by Gruvbox Dark
+ * Font: FiraCode Nerd Font
+ */
+
+configuration {
+    show-icons:     true;
+    display-clipboard: "📋 History";
+    font:           "FiraCode Nerd Font 12";
+}
+
+* {
+    /* Gruvbox Dark Palette */
+    bg:           #282828;
+    bg-alt:       #3c3836;
+    fg:           #ebdbb2;
+    fg-alt:       #a89984;
+    
+    blue:         #458588;
+    aqua:         #689d6a;
+    red:          #cc241d;
+    
+    background-color: @bg;
+    text-color:       @fg;
+    
+    border-color:     @blue;
+}
+
+window {
+    background-color: @bg;
+    border:           2px;
+    border-radius:    8px;
+    padding:          16px;
+    width:            60%; /* Wider to fit icon + text */
+}
+
+mainbox {
+    border:  0;
+    padding: 0;
+    children: [ "inputbar", "listview" ];
+    spacing: 12px;
+}
+
+/* --- Input Bar --- */
+inputbar {
+    children:   [ "prompt", "entry" ];
+    spacing:    10px;
+    padding:    10px 12px;
+    background-color: @bg-alt;
+    border-radius: 4px;
+}
+
+prompt {
+    text-color: @blue;
+    background-color: inherit;
+    vertical-align: 0.5;
+}
+
+entry {
+    text-color: @fg;
+    background-color: inherit;
+    placeholder: "Search clipboard history...";
+    placeholder-color: @fg-alt;
+    vertical-align: 0.5;
+    single-line: true;
+}
+
+/* --- List View --- */
+listview {
+    border:       0;
+    padding:      0px;
+    spacing:      8px; /* Space between elements */
+    columns:      1;
+    lines:        6;   /* Show a reasonable number of items */
+    cycle:        true;
+    dynamic:      true;
+    layout:       vertical;
+}
+
+element {
+    border:           0;
+    border-radius:    4px;
+    padding:          8px;
+    
+    /* * KEY: Back to horizontal, icon and text side-by-side. */
+    orientation:      horizontal; 
+    children:         [ "element-icon", "element-text" ];
+    spacing:          15px; /* Space between icon and text */
+}
+
+/* --- Element States --- */
+element normal normal {
+    background-color: @bg;
+    text-color:       @fg;
+}
+
+element alternate normal {
+    background-color: @bg-alt;
+    text-color:       @fg;
+}
+
+element selected normal {
+    background-color: @blue;
+    text-color:       @bg;
+}
+
+element-icon {
+    background-color: @bg-alt; 
+    border-radius:    4px;
+    vertical-align:   0.5;
+    horizontal-align: 0.5;
+    
+    /* * KEY: A fixed, large-ish size for the icon/thumbnail.
+     * This is the compromise size.
+     */
+    size: 80px;
+}
+
+element-text {
+    background-color: inherit;
+    vertical-align:   0.5;   /* Center text vertically */
+    horizontal-align: 0.0;   /* Left-align text */
+    
+    /* Allow text to wrap for multiple lines */
+    single-line: false;
+    lines: 5; /* Allow up to 5 lines for long snippets */
+
+    /* * COMPROMISE: De-emphasize *all* text to make the
+     * "binary data" less prominent.
+     */
+    font: "FiraCode Nerd Font 10"; 
+    text-color: @fg-alt;
+}
+
+/* Make text readable again when selected */
+element selected element-text {
+    text-color: @bg;
+    font: "FiraCode Nerd Font 11"; /* Slightly larger when selected */
+}

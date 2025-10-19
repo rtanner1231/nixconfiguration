@@ -48,6 +48,7 @@ in
     postman
     libreoffice
     soapui
+    imagemagick
   ];
 
   fonts.fontconfig.enable = true;

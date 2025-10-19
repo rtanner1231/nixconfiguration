@@ -5,5 +5,6 @@
     ./powerMenu.nix
     ./launcher.nix
     ./switchWm.nix
+    ./clipboard.nix
   ];
 }
