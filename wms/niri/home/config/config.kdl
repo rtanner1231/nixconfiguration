@@ -219,9 +219,9 @@ binds {
     Mod+V       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
-    Shift+Mod+S { screenshot; }
+    Shift+Mod+S { spawn "screenshotcopy"; }
     Alt+Mod+S { screenshot-screen; }
-    Ctrl+Mod+S { screenshot-window; }
+    Ctrl+Mod+S { spawn "screenshotannotate"; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here

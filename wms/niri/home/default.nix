@@ -9,5 +9,6 @@
     ../../../common/wayland/hyprpaper
     ./hypridle
     ../../../core/home
+    ../../../common/wayland/screenshot
   ];
 }
