@@ -10,6 +10,7 @@
   # };
   services.displayManager.gdm.enable = true;
   programs.niri.enable = true;
+  programs.niri.package = pkgs.niri;
   services.gvfs.enable = true;
   services.xserver.enable = false;
 

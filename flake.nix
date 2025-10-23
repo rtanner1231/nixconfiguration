@@ -16,12 +16,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     suitecloud.url = "github:rtanner1231/suitecloud-nix";
+    niri-flake = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       self,
       nixpkgs,
+      niri-flake,
       ...
     }@inputs:
     let
@@ -59,6 +64,7 @@
           modules = [
             profile.path
             inputs.nix-sweep.nixosModules.default
+            niri-flake.nixosModules.niri
           ]
           ++ additionalModules;
         };
