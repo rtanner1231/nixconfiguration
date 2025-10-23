@@ -21,7 +21,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
   outputs =
     {
       self,
@@ -31,12 +30,15 @@
     }@inputs:
     let
       wms = [
-        "gnome"
-        "cinnamon"
-        "kde"
-        "hyprland"
-        "niri"
-        "cosmic"
+        { name = "gnome"; }
+        { name = "cinnamon"; }
+        { name = "kde"; }
+        { name = "hyprland"; }
+        {
+          name = "niri";
+          additionalModules = [ niri-flake.nixosModules.niri ];
+        }
+        { name = "cosmic"; }
       ];
       profiles = [
         {
@@ -61,22 +63,24 @@
           specialArgs = {
             inherit wm inputs profile;
           };
+          # Removed niri-flake from the base modules list
           modules = [
             profile.path
             inputs.nix-sweep.nixosModules.default
-            niri-flake.nixosModules.niri
           ]
           ++ additionalModules;
         };
       allCombinations = nixpkgs.lib.concatMap (
         profile:
-        builtins.map (wm: {
-          name = "${profile.name}-${wm}";
+        builtins.map (wmObj: {
+          name = "${profile.name}-${wmObj.name}";
           value = makeSystem {
             profile = profile;
-            wm = wm;
+            wm = wmObj.name;
+            additionalModules = wmObj.additionalModules or [ ];
           };
         }) wms
+
       ) profiles;
     in
     {
