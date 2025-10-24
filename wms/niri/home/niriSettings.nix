@@ -543,6 +543,26 @@
           "power-off-monitors" = [ ];
         };
       };
+      "Mod+F1" = {
+        action = {
+          "set-column-width" = "25%";
+        };
+      };
+      "Mod+F2" = {
+        action = {
+          "set-column-width" = "50%";
+        };
+      };
+      "Mod+F3" = {
+        action = {
+          "set-column-width" = "75%";
+        };
+      };
+      "Mod+F4" = {
+        action = {
+          "set-column-width" = "100%";
+        };
+      };
       "XF86MonBrightnessUp" = {
         "allow-when-locked" = true;
         action = {
