@@ -50,6 +50,15 @@
             userEmail = "rtanner@myron.com";
           };
         }
+        {
+          name = "l1";
+          path = ./profiles/l1;
+          user = "rick";
+          git = {
+            userName = "Richard Tanner";
+            userEmail = "rtanner@myron.com";
+          };
+        }
       ];
       system = "x86_64-linux";
       makeSystem =
