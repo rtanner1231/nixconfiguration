@@ -14,5 +14,6 @@
     libsecret
     seahorse
     inputs.sfdx.packages.${pkgs.system}.default
+    lm_sensors
   ];
 }
