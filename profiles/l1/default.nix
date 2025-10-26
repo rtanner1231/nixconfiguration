@@ -1,4 +1,8 @@
-{ wm, profile, ... }:
+{
+  wm,
+  profile,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -7,18 +11,18 @@
     ../../wms/${wm}
   ];
 
-  #rclonebackup = {
-  #  enable = true;
-  #  remoteName = "GDrive";
-  #  remotePath = profile.name;
-  #  excludedPaths = [
-  #    "/.mozilla/**"
-  #    "/.cache/**"
-  #    "/.zen/**"
-  #    "/.config/slack/**"
-  #    "/.thunderbird/**"
-  #    "/.config/cosmic/**"
-  #    "/.bun/**"
-  #  ];
-  #};
+  rclonebackup = {
+    enable = true;
+    remoteName = "GDrive";
+    remotePath = profile.name;
+    excludedPaths = [
+      "/.mozilla/**"
+      "/.cache/**"
+      "/.zen/**"
+      "/.config/slack/**"
+      "/.thunderbird/**"
+      "/.config/cosmic/**"
+      "/.bun/**"
+    ];
+  };
 }
