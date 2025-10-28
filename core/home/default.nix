@@ -49,6 +49,7 @@ in
     libreoffice
     soapui
     imagemagick
+    mission-center
   ];
 
   fonts.fontconfig.enable = true;
