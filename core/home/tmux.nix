@@ -1,5 +1,11 @@
 { pkgs, ... }:
+# let
+#   tmux-sessionizer-pkg = import ./scripts/tmux-sessionizer-pkg.nix { inherit pkgs; };
+# in
 {
+
+  # home.packages = [ tmux-sessionizer-pkg ];
+
   programs.tmux = {
     enable = true;
 
@@ -42,36 +48,44 @@
     # Configuration options that don't have a dedicated Home Manager setting
     # or are for plugins are placed here.
     extraConfig = ''
-       
-      # Set fish as the default shell/command
-      # Using `${pkgs.fish}/bin/fish` ensures we use the version of fish
-      # managed by Nix, which is more reliable than a hardcoded path.
-      set -g default-command ${pkgs.fish}/bin/fish
+                   
+                  # Set fish as the default shell/command
+                  # Using `${pkgs.fish}/bin/fish` ensures we use the version of fish
+                  # managed by Nix, which is more reliable than a hardcoded path.
+                  set -g default-command ${pkgs.fish}/bin/fish
 
-        bind f kill-pane -a
+                    bind f kill-pane -a
 
-        bind-key -T copy-mode-vi v send-keys -X begin-selection
-        bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
-        bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+                    bind-key -T copy-mode-vi v send-keys -X begin-selection
+                    bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+                    bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+                    
+                    unbind J
+                    bind J run-shell "tmux-sessionizer --root $HOME/projects/ --maxdepth 1"
 
-        # Open panes in the current directory
-        bind '_' split-window -v -c "#{pane_current_path}"
-        bind | split-window -h -c "#{pane_current_path}"
+      # bind J run-shell "tmux-sessionizer --root $HOME"
 
-        # Set true colors and focus events
-        set-option -sa terminal-overrides ",xterm*:Tc"
-        set-option -g focus-events on
-        set-option -g renumber-windows on
+                    # unbind S
+                    # bind S run-shell "tmux-sessionizer --root $HOME/projects/ --maxdepth 1"
 
-        # Restore sessions on tmux startup
-        set -g @continuum-restore 'on'
+                    # Open panes in the current directory
+                    bind '_' split-window -v -c "#{pane_current_path}"
+                    bind | split-window -h -c "#{pane_current_path}"
 
-        # Status bar customization
-        set -g status-interval 10
-        set -g status-justify left
-        set -g status-position bottom
-        set -g status-left-length 200
-        set -g status-style 'bg=default' # transparent background
+                    # Set true colors and focus events
+                    set-option -sa terminal-overrides ",xterm*:Tc"
+                    set-option -g focus-events on
+                    set-option -g renumber-windows on
+
+                    # Restore sessions on tmux startup
+                    set -g @continuum-restore 'on'
+
+                    # Status bar customization
+                    set -g status-interval 10
+                    set -g status-justify left
+                    set -g status-position bottom
+                    set -g status-left-length 200
+                    set -g status-style 'bg=default' # transparent background
     '';
   };
 

@@ -7,6 +7,7 @@ in
 
   imports = [
     ./tmux.nix
+    ./scripts/tmux-sessionizer.nix
   ];
 
   home.packages = with pkgs; [
