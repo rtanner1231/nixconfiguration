@@ -24,6 +24,7 @@ in
   # Basic user packages that are always installed
   home.packages = with pkgs; [
     firefox
+    zoom
     htop
     nerd-fonts.fira-code
     cargo
