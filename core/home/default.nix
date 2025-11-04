@@ -30,7 +30,6 @@ in
     cargo
     fd
     ripgrep
-    fzf
     prefetch-npm-deps
     openjdk
     gh

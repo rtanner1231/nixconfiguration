@@ -29,4 +29,13 @@ in
 
   xdg.configFile."starship.toml".source = create_symlink "${dotfiles}/.config/starship.toml";
 
+  programs.fzf = {
+    enable = true;
+    tmux.enableShellIntegration = true;
+  };
+
+  programs.sesh = {
+    enable = true;
+  };
+
 }
