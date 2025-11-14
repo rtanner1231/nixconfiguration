@@ -50,6 +50,8 @@ in
     soapui
     imagemagick
     mission-center
+    filezilla
+    obsidian
   ];
 
   fonts.fontconfig.enable = true;
