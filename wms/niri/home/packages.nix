@@ -18,7 +18,6 @@
     wl-clip-persist
     wl-color-picker
     alacritty
-    yazi
     wev
   ];
 
