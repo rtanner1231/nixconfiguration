@@ -13,7 +13,7 @@
     clang
     libsecret
     seahorse
-    inputs.sfdx.packages.${pkgs.system}.default
+    inputs.sfdx.packages.${pkgs.stdenv.hostPlatform.system}.default
     lm_sensors
   ];
 }

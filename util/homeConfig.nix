@@ -23,7 +23,7 @@
     users."${profile.user}" = {
       imports = [
         wmHome
-        inputs.suitecloud.homeManagerModules.${pkgs.system}.default
+        inputs.suitecloud.homeManagerModules.${pkgs.stdenv.hostPlatform.system}.default
       ]
       ++ lib.optional (builtins.pathExists profileHomeFile) profileHomeFile;
       home = {

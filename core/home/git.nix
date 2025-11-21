@@ -24,23 +24,17 @@
   programs.git = {
     enable = true;
 
-    userName = profile.git.userName;
-    userEmail = profile.git.userEmail;
-
-    aliases = {
-      dt = "!git difftool --dir-diff --no-symlinks -t meld";
-      mt = "!git mergetool -t meld";
-    };
-
-    delta = {
-      enable = true;
-      options = {
-        navigate = true;
-        light = false;
+    settings = {
+      user = {
+        name = profile.git.userName;
+        email = profile.git.userEmail;
       };
-    };
 
-    extraConfig = {
+      alias = {
+        dt = "!git difftool --dir-diff --no-symlinks -t meld";
+        mt = "!git mergetool -t meld";
+      };
+
       diff.tool = "meld";
       # interactive = {
       #   diffFilter = "delta --color-only";
@@ -74,6 +68,16 @@
       "credential.https://gist.github.com" = {
         helper = "!${pkgs.gh}/bin/gh auth git-credential";
       };
+    };
+
+  };
+
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      navigate = true;
+      light = false;
     };
   };
 }
