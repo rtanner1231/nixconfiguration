@@ -17,6 +17,7 @@
     ./env.nix
     ./sudo.nix
     ./rclone.nix # must be set up using rclone config
+    ./distrobox.nix
   ];
 
 }
