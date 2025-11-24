@@ -5,7 +5,6 @@ let
 in
 {
   home.packages = with pkgs; [
-    neovim
     lua-language-server
     typescript-language-server
     bash-language-server
@@ -15,6 +14,12 @@ in
     clang-tools
     nixfmt-rfc-style # nix formatter
   ];
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+  };
 
   xdg.configFile."nvim" = {
     source = create_symlink "${dotfiles}/.config/nvim";
