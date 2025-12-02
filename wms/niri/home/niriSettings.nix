@@ -25,8 +25,9 @@
       touchpad = {
         tap = true;
       };
-      "warp-mouse-to-focus" = true;
+      "warp-mouse-to-focus".enable = true;
       "workspace-auto-back-and-forth" = true;
+      #"focus-follows-mouse".enable = true;
     };
 
     layout = {
@@ -123,7 +124,7 @@
         matches = [
           {
             "is-focused" = true;
-            "app-id" = "r#\"com.mitchellh.ghostty\"#";
+            "app-id" = "com.mitchellh.ghostty";
           }
         ];
         opacity = 0.9;
@@ -132,7 +133,7 @@
         matches = [
           {
             "is-focused" = false;
-            "app-id" = "r#\"com.mitchellh.ghostty\"#";
+            "app-id" = "com.mitchellh.ghostty";
           }
         ];
         opacity = 0.7;
@@ -191,6 +192,10 @@
       # { argv = [ "swww", "img", "~/.mine/dots/wallpapers/1.png" ]; } # Example of command with args
       # { argv = [ "systemctl", "--user", "start", "hyprpolkitagent" ]; }
     ];
+    cursor = {
+      size = 24;
+      theme = "Adwaita";
+    };
     binds = {
       "Mod+1" = {
         action = {
