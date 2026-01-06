@@ -53,6 +53,7 @@ in
     mission-center
     filezilla
     obsidian
+    gimp
   ];
 
   fonts.fontconfig.enable = true;
