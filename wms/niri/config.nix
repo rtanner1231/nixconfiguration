@@ -14,11 +14,26 @@
   services.gvfs.enable = true;
   services.xserver.enable = false;
 
+  #services.gnome.evolution-data-server.enable = true;
+
   services.displayManager.sessionPackages = [ pkgs.niri ];
+
+  services.upower.enable = true;
+  services.power-profiles-daemon.enable = true;
+
+  # 2. Enable Bluetooth (Fixes bluetoothctl error)
+  hardware.bluetooth.enable = true;
   security.pam.services.gdm.enableGnomeKeyring = true;
 
   environment.systemPackages = with pkgs; [
     xwayland-satellite
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    upower
+    bluez
+    python3
+    evolution-data-server
+    snixembed
+    #evolution
   ];
 
   environment.sessionVariables = {
@@ -27,10 +42,21 @@
 
   xdg.portal = {
     enable = true;
+    wlr.enable = false;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
-      xdg-desktop-portal-gnome
+      # xdg-desktop-portal-gnome
     ];
+    config.common.default = "gtk";
+    # config = {
+    #   niri = {
+    #     default = [ "gtk" ];
+    #   };
+    #   # Fallback for other desktops or if niri isn't detected correctly
+    #   common = {
+    #     default = [ "gtk" ];
+    #   };
+    # };
     # config = {
     #   common = {
     #     default = [

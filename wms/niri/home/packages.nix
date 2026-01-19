@@ -19,6 +19,7 @@
     wl-color-picker
     alacritty
     wev
+    kdePackages.kate
   ];
 
 }

@@ -80,21 +80,25 @@
       "media" = { };
     };
 
+    gestures = {
+      hot-corners.enable = false;
+    };
+
     "window-rules" = [
-      {
-        matches = [
-          {
-            "at-startup" = true;
-            "app-id" = "r#\"thunderbird\"#";
-          }
-          {
-            "at-startup" = true;
-            "app-id" = "r#\"Slack\"#";
-          }
-        ];
-        "open-on-workspace" = "media";
-        "open-maximized" = true;
-      }
+      # {
+      #   matches = [
+      #     {
+      #       "at-startup" = true;
+      #       "app-id" = "r#\"thunderbird\"#";
+      #     }
+      #     {
+      #       "at-startup" = true;
+      #       "app-id" = "r#\"Slack\"#";
+      #     }
+      #   ];
+      #   "open-on-workspace" = "media";
+      #   "open-maximized" = true;
+      # }
       {
         matches = [
           { "app-id" = "r#\"^org\\.wezfurlong\\.wezterm$\"#"; }
@@ -185,9 +189,20 @@
     "screenshot-path" = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
 
     "spawn-at-startup" = [
-      { argv = [ "waybar" ]; }
-      { argv = [ "thunderbird" ]; }
-      { argv = [ "slack" ]; }
+      { argv = [ "snixembed" ]; }
+      #{ argv = [ "waybar" ]; }
+      # { argv = [ "thunderbird" ]; }
+      # { argv = [ "slack" ]; }
+      {
+        argv = [
+          "sh"
+          "-c"
+          "export QT_NO_XDG_DESKTOP_PORTAL=1 && noctalia-shell"
+          #"sleep 2; noctalia-shell > /dev/null 2>&1 & disown"
+
+        ];
+      }
+      #{ argv = [ "noctalia-shell" ]; }
       # { argv = [ "swww-daemon" ]; }
       # { argv = [ "swww", "img", "~/.mine/dots/wallpapers/1.png" ]; } # Example of command with args
       # { argv = [ "systemctl", "--user", "start", "hyprpolkitagent" ]; }
@@ -305,7 +320,7 @@
       };
       "Mod+E" = {
         action = {
-          spawn = "nautilus";
+          spawn-sh = "ghostty -e yazi";
         };
       };
       "Mod+U" = {
@@ -318,9 +333,14 @@
           spawn = "firefox";
         };
       };
+      # "Mod+D" = {
+      #   action = {
+      #     spawn = "rofi-launcher";
+      #   };
+      # };
       "Mod+D" = {
         action = {
-          spawn = "rofi-launcher";
+          spawn-sh = "noctalia-shell ipc call launcher toggle";
         };
       };
       "Mod+O" = {
@@ -363,22 +383,22 @@
       };
       "Mod+Shift+H" = {
         action = {
-          "move-column-left" = [ ];
+          "move-window-to-monitor-left" = [ ];
         };
       };
       "Mod+Shift+J" = {
         action = {
-          "move-window-down" = [ ];
+          "move-window-down-or-to-workspace-down" = [ ];
         };
       };
       "Mod+Shift+K" = {
         action = {
-          "move-window-up" = [ ];
+          "move-window-up-or-to-workspace-up" = [ ];
         };
       };
       "Mod+Shift+L" = {
         action = {
-          "move-column-right" = [ ];
+          "move-window-to-monitor-right" = [ ];
         };
       };
       "Mod+Ctrl+J" = {
@@ -426,9 +446,15 @@
       #     spawn = "rofi-switchwm";
       #   };
       # };
+      # "Mod+Ctrl+Z" = {
+      #   action = {
+      #     spawn = "rofi-powermenu";
+      #   };
+      # };
+
       "Mod+Ctrl+Z" = {
         action = {
-          spawn = "rofi-powermenu";
+          spawn-sh = "noctalia-shell ipc call sessionMenu toggle";
         };
       };
       "Mod+BracketLeft" = {
