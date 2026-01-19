@@ -13,6 +13,7 @@ in
     yaml-language-server
     clang-tools
     nixfmt-rfc-style # nix formatter
+    vue-language-server
   ];
 
   programs.neovim = {

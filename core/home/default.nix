@@ -54,6 +54,7 @@ in
     filezilla
     obsidian
     gimp
+    lsof
   ];
 
   fonts.fontconfig.enable = true;
