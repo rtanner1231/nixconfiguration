@@ -44,7 +44,7 @@
               onlyActiveWorkspaces = false;
               onlySameOutput = false;
               showPinnedApps = true;
-              showTitle = true;
+              showTitle = false;
               smartWidth = true;
               titleWidth = 120;
             }

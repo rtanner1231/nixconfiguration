@@ -11,5 +11,6 @@
     ../../../core/home
     ../../../common/wayland/screenshot
     ./noctalia
+    # ./dms
   ];
 }

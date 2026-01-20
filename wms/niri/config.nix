@@ -38,6 +38,11 @@
 
   environment.sessionVariables = {
     _JAVA_AWT_WM_NONREPARENTING = "1";
+    QT_QPA_PLATFORM = "wayland";
+    # Fixes some flickering/green screen issues on Nvidia
+    NIXOS_OZONE_WL = "1";
+    # Specific fix for some QtQuick rendering artifacts
+    QSG_RENDER_LOOP = "basic";
   };
 
   xdg.portal = {
