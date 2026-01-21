@@ -138,7 +138,7 @@
         showCalendarEvents = false;
       };
       wallpaper = {
-        directory = "/home/rick/Pictures/Wallpapers";
+        directory = "/home/rick/Pictures/Wallpaper";
       };
       appLauncher = {
         enableClipboardHistory = true;

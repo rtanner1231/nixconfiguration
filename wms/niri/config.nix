@@ -21,7 +21,6 @@
   services.upower.enable = true;
   services.power-profiles-daemon.enable = true;
 
-  # 2. Enable Bluetooth (Fixes bluetoothctl error)
   hardware.bluetooth.enable = true;
   security.pam.services.gdm.enableGnomeKeyring = true;
 
@@ -50,9 +49,9 @@
     wlr.enable = false;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
-      # xdg-desktop-portal-gnome
+      xdg-desktop-portal-gnome
     ];
-    config.common.default = "gtk";
+    #config.common.default = "gtk";
     # config = {
     #   niri = {
     #     default = [ "gtk" ];
@@ -62,17 +61,17 @@
     #     default = [ "gtk" ];
     #   };
     # };
-    # config = {
-    #   common = {
-    #     default = [
-    #       "gnome"
-    #       "gtk"
-    #     ];
-    #     "org.freedesktop.impl.portal.Access" = [ "gtk" ];
-    #     "org.freedesktop.impl.portal.Notification" = [ "gtk" ];
-    #     "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
-    #     "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
-    #   };
-    # };
+    config = {
+      common = {
+        default = [
+          "gnome"
+          "gtk"
+        ];
+        "org.freedesktop.impl.portal.Access" = [ "gtk" ];
+        "org.freedesktop.impl.portal.Notification" = [ "gtk" ];
+        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+      };
+    };
   };
 }

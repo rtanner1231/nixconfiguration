@@ -84,103 +84,109 @@
       hot-corners.enable = false;
     };
 
-    # "window-rules" = [
-    #   # {
-    #   #   matches = [
-    #   #     {
-    #   #       "at-startup" = true;
-    #   #       "app-id" = "r#\"thunderbird\"#";
-    #   #     }
-    #   #     {
-    #   #       "at-startup" = true;
-    #   #       "app-id" = "r#\"Slack\"#";
-    #   #     }
-    #   #   ];
-    #   #   "open-on-workspace" = "media";
-    #   #   "open-maximized" = true;
-    #   # }
-    #   {
-    #     matches = [
-    #       { "app-id" = "r#\"^org\\.wezfurlong\\.wezterm$\"#"; }
-    #     ];
-    #     "default-column-width" = { };
-    #   }
-    #   {
-    #     matches = [
-    #       {
-    #         "app-id" = "r#\"firefox$\"#";
-    #         title = "^Picture-in-Picture$";
-    #       }
-    #     ];
-    #     "open-floating" = true;
-    #   }
-    #   {
-    #     matches = [ ]; # Applies to all windows
-    #     "geometry-corner-radius" = {
-    #       "top-left" = 12.0;
-    #       "top-right" = 12.0;
-    #       "bottom-right" = 12.0;
-    #       "bottom-left" = 12.0;
-    #     };
-    #     "clip-to-geometry" = true;
-    #   }
-    #   {
-    #     matches = [
-    #       {
-    #         "is-focused" = true;
-    #         "app-id" = "com.mitchellh.ghostty";
-    #       }
-    #     ];
-    #     opacity = 0.9;
-    #   }
-    #   {
-    #     matches = [
-    #       {
-    #         "is-focused" = false;
-    #         "app-id" = "com.mitchellh.ghostty";
-    #       }
-    #     ];
-    #     opacity = 0.7;
-    #   }
-    # ];
+    "window-rules" = [
+      #   # {
+      #   #   matches = [
+      #   #     {
+      #   #       "at-startup" = true;
+      #   #       "app-id" = "r#\"thunderbird\"#";
+      #   #     }
+      #   #     {
+      #   #       "at-startup" = true;
+      #   #       "app-id" = "r#\"Slack\"#";
+      #   #     }
+      #   #   ];
+      #   #   "open-on-workspace" = "media";
+      #   #   "open-maximized" = true;
+      #   # }
+      #   {
+      #     matches = [
+      #       { "app-id" = "r#\"^org\\.wezfurlong\\.wezterm$\"#"; }
+      #     ];
+      #     "default-column-width" = { };
+      #   }
+      #   {
+      #     matches = [
+      #       {
+      #         "app-id" = "r#\"firefox$\"#";
+      #         title = "^Picture-in-Picture$";
+      #       }
+      #     ];
+      #     "open-floating" = true;
+      #   }
+      {
+        matches = [ ]; # Applies to all windows
+        "geometry-corner-radius" = {
+          "top-left" = 12.0;
+          "top-right" = 12.0;
+          "bottom-right" = 12.0;
+          "bottom-left" = 12.0;
+        };
+        "clip-to-geometry" = true;
+      }
+      {
+        matches = [
+          {
+            "is-focused" = true;
+            "app-id" = "com.mitchellh.ghostty";
+          }
+        ];
+        opacity = 0.9;
+      }
+      {
+        matches = [
+          {
+            "is-focused" = false;
+            "app-id" = "com.mitchellh.ghostty";
+          }
+        ];
+        opacity = 0.7;
+      }
+    ];
     #
-    # "layer-rules" = [
-    #   {
-    #     # matches = [
-    #     #   { namespace = "waybar"; }
-    #     #   { "at-startup" = true; }
-    #     # ];
-    #     shadow = {
-    #       enable = true; # Was 'on'
-    #       "draw-behind-window" = true;
-    #       softness = 0;
-    #       spread = 0.5;
-    #       offset = {
-    #         x = 0.5;
-    #         y = 0.5;
-    #       };
-    #       color = "#2d3228";
-    #       "inactive-color" = "#2d3228";
-    #     };
-    #   }
-    #   {
-    #     matches = [
-    #       { namespace = "^launcher$"; }
-    #     ];
-    #     shadow = {
-    #       enable = true; # Was 'on'
-    #       "draw-behind-window" = true;
-    #       softness = 0;
-    #       spread = 1;
-    #       offset = {
-    #         x = 1;
-    #         y = 1;
-    #       };
-    #       color = "#2d3228";
-    #       "inactive-color" = "#2d3228";
-    #     };
-    #   }
-    # ];
+    "layer-rules" = [
+      {
+        matches = [
+          { namespace = "^noctalia-overview*"; }
+        ];
+        place-within-backdrop = true;
+      }
+      # {
+      #     # matches = [
+      #     #   { namespace = "waybar"; }
+      #     #   { "at-startup" = true; }
+      #     # ];
+      #     shadow = {
+      #       enable = true; # Was 'on'
+      #       "draw-behind-window" = true;
+      #       softness = 0;
+      #       spread = 0.5;
+      #       offset = {
+      #         x = 0.5;
+      #         y = 0.5;
+      #       };
+      #       color = "#2d3228";
+      #       "inactive-color" = "#2d3228";
+      #     };
+      #   }
+      #   {
+      #     matches = [
+      #       { namespace = "^launcher$"; }
+      #     ];
+      #     shadow = {
+      #       enable = true; # Was 'on'
+      #       "draw-behind-window" = true;
+      #       softness = 0;
+      #       spread = 1;
+      #       offset = {
+      #         x = 1;
+      #         y = 1;
+      #       };
+      #       color = "#2d3228";
+      #       "inactive-color" = "#2d3228";
+      #     };
+      #   }
+    ];
     "prefer-no-csd" = true;
     # animations = { off = true;};
     "hotkey-overlay" = {
@@ -357,7 +363,7 @@
       };
       "Mod+H" = {
         action = {
-          "focus-column-left" = [ ];
+          "focus-column-or-monitor-left" = [ ];
         };
       };
       "Mod+J" = {
@@ -372,7 +378,7 @@
       };
       "Mod+L" = {
         action = {
-          "focus-column-right" = [ ];
+          "focus-column-or-monitor-right" = [ ];
         };
       };
       "Mod+Shift+H" = {
@@ -562,10 +568,15 @@
           "toggle-keyboard-shortcuts-inhibit" = [ ];
         };
       };
+      # "Mod+B" = {
+      #   action = {
+      #     "spawn-sh" =
+      #       "rofi -show clipboard -modi 'clipboard:~/.config/rofi/scripts/cliphist-rofi-img' -show-icons -theme '~/.config/rofi/themes/rofi-cliphist-theme.rasi'";
+      #   };
+      # };
       "Mod+B" = {
         action = {
-          "spawn-sh" =
-            "rofi -show clipboard -modi 'clipboard:~/.config/rofi/scripts/cliphist-rofi-img' -show-icons -theme '~/.config/rofi/themes/rofi-cliphist-theme.rasi'";
+          "spawn-sh" = "noctalia-shell ipc call launcher clipboard";
         };
       };
       "Mod+Shift+P" = {
