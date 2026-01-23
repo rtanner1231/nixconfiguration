@@ -55,6 +55,7 @@ in
     obsidian
     gimp
     lsof
+    google-chat-linux
   ];
 
   fonts.fontconfig.enable = true;
