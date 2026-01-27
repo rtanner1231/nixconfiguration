@@ -24,6 +24,9 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wayscriber = {
+      url = "github:devmobasa/wayscriber";
+    };
     # dms = {
     #   url = "github:AvengeMedia/DankMaterialShell/stable";
     #   inputs.nixpkgs.follows = "nixpkgs";
