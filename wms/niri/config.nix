@@ -32,7 +32,7 @@
     python3
     evolution-data-server
     snixembed
-    #evolution
+    evolution
     # inputs.wayscriber.packages.${pkgs.system}.default
     # inputs.wayscriber.packages.${pkgs.system}.wayscriber-configurator
   ];

@@ -8,6 +8,9 @@
     "QT_NO_XDG_DESKTOP_PORTAL=1"
   ];
 
+  # xdg.configFile."noctalia/plugins/next-event".source =
+  #   inputs.next-event.packages.${pkgs.system}.default;
+
   # systemd.user.services.noctalia = {
   #   Unit = {
   #     Description = "Noctalia Shell";
