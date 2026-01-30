@@ -20,6 +20,7 @@
     alacritty
     wev
     kdePackages.kate
+    wayscriber
   ];
 
 }

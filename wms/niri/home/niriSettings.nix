@@ -202,6 +202,12 @@
       {
         argv = [ "noctalia-shell" ];
       }
+      {
+        argv = [
+          "wayscriber"
+          "--daemon"
+        ];
+      }
       #{ argv = [ "noctalia-shell" ]; }
       # { argv = [ "swww-daemon" ]; }
       # { argv = [ "swww", "img", "~/.mine/dots/wallpapers/1.png" ]; } # Example of command with args
@@ -311,11 +317,6 @@
       "Mod+Shift+0" = {
         action = {
           "move-window-to-workspace" = 10;
-        };
-      };
-      "Mod+T" = {
-        action = {
-          "focus-workspace" = "media";
         };
       };
       "Mod+E" = {
@@ -560,6 +561,11 @@
       "Mod+W" = {
         action = {
           "toggle-column-tabbed-display" = [ ];
+        };
+      };
+      "Mod+T" = {
+        action = {
+          "spawn-sh" = "pkill -SIGUSR1 wayscriber";
         };
       };
       "Mod+Escape" = {
