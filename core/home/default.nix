@@ -56,6 +56,7 @@ in
     gimp
     lsof
     google-chat-linux
+    killall
   ];
 
   fonts.fontconfig.enable = true;
