@@ -222,11 +222,7 @@
       theme = "Adwaita";
     };
     binds = {
-      "Mod+1" = {
-        action = {
-          "focus-workspace" = 1;
-        };
-      };
+      "Mod+1".action."focus-workspace" = 1;
       "Mod+2" = {
         action = {
           "focus-workspace" = 2;

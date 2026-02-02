@@ -2,7 +2,8 @@
 {
   imports = [
     ./packages.nix
-    ./niriSettings.nix
+    #./niriSettings.nix
+    ./settings
     #./waybar
     # ../../../common/wayland/hyprlock
     ../../../common/wayland/rofi
