@@ -51,7 +51,11 @@
         proportion = 0.5;
       };
       "focus-ring" = {
-        enable = false;
+        enable = true;
+        width = 2;
+        active = {
+          color = "#7aa2f7";
+        };
       };
       border = {
         width = 1.5;
@@ -326,7 +330,7 @@
       };
       "Mod+U" = {
         action = {
-          spawn = "ghostty";
+          spawn-sh = "ghostty -e tmux new -A -s scratch";
         };
       };
       "Alt+F" = {

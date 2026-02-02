@@ -125,23 +125,6 @@
         "type": "github"
       }
     },
-    "next-event": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1769783180,
-        "narHash": "sha256-zlOX7uiVyDjJ46GWdFLuABfIKqv47SwS3MTLl1OL60I=",
-        "path": "/home/rick/projects/qshell-next-event",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/rick/projects/qshell-next-event",
-        "type": "path"
-      }
-    },
     "niri-flake": {
       "inputs": {
         "niri-stable": "niri-stable",
@@ -324,11 +307,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769781912,
-        "narHash": "sha256-PLRA5UMxzAdmmjm5TQiSqrcuBqEU0tVLFpdN/avVkWk=",
+        "lastModified": 1769803827,
+        "narHash": "sha256-EtGFVP4DFvi9+bXoFaV6bgHyIPvUnXPiHxZ/kRFF1Vc=",
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
-        "rev": "39dc324b2f12d11a8eb7e03a7371cb29c2b605cf",
+        "rev": "2625ff29547b6607222ce1edb416131623e580fc",
         "type": "github"
       },
       "original": {
@@ -337,14 +320,31 @@
         "type": "github"
       }
     },
+    "noctalia-calendar": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769805036,
+        "narHash": "sha256-1DrGiSvH6ZPnQ2TAfHAgcByFP8W/WBEKVcHqMYB4jsk=",
+        "path": "/home/rick/projects/noctalia-calendar",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/rick/projects/noctalia-calendar",
+        "type": "path"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "next-event": "next-event",
         "niri-flake": "niri-flake",
         "nix-sweep": "nix-sweep",
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
+        "noctalia-calendar": "noctalia-calendar",
         "sfdx": "sfdx",
         "suitecloud": "suitecloud",
         "wayscriber": "wayscriber",

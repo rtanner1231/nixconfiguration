@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 {
   # services.greetd = {
   #   enable = true;
@@ -14,7 +19,24 @@
   services.gvfs.enable = true;
   services.xserver.enable = false;
 
-  #services.gnome.evolution-data-server.enable = true;
+  services.gnome.evolution-data-server.enable = true;
+  services.gnome.gnome-online-accounts.enable = true;
+
+  programs.dconf.enable = true;
+
+  environment.sessionVariables = {
+    GI_TYPELIB_PATH = lib.makeSearchPath "lib/girepository-1.0" (
+      with pkgs;
+      [
+        evolution-data-server
+        libical
+        glib.out
+        libsoup_3
+        json-glib
+        gobject-introspection
+      ]
+    );
+  };
 
   services.displayManager.sessionPackages = [ pkgs.niri ];
 
@@ -26,13 +48,17 @@
 
   environment.systemPackages = with pkgs; [
     xwayland-satellite
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    (inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+      calendarSupport = true;
+    })
     upower
     bluez
     python3
     evolution-data-server
     snixembed
     evolution
+    gnome-control-center
     # inputs.wayscriber.packages.${pkgs.system}.default
     # inputs.wayscriber.packages.${pkgs.system}.wayscriber-configurator
   ];

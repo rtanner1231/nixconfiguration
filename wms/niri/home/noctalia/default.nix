@@ -1,4 +1,7 @@
 { pkgs, inputs, ... }:
+let
+  calendarPlugin = inputs.noctalia-calendar.packages.${pkgs.system}.default;
+in
 {
   # import the home manager module
   imports = [
@@ -10,6 +13,11 @@
 
   # xdg.configFile."noctalia/plugins/next-event".source =
   #   inputs.next-event.packages.${pkgs.system}.default;
+
+  home.packages = [ calendarPlugin ];
+
+  xdg.configFile."noctalia/plugins/noctalia-calendar".source =
+    "${calendarPlugin}/share/noctalia/plugins/noctalia-calendar";
 
   # systemd.user.services.noctalia = {
   #   Unit = {

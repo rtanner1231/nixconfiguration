@@ -27,6 +27,10 @@
     wayscriber = {
       url = "github:devmobasa/wayscriber";
     };
+    noctalia-calendar = {
+      url = "path:/home/rick/projects/noctalia-calendar";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # next-event = {
     #   url = "path:/home/rick/projects/qshell-next-event";
     #   inputs.nixpkgs.follows = "nixpkgs";
