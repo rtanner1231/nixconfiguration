@@ -104,7 +104,7 @@
     "Ctrl+Mod+S".action.spawn = "screenshotannotate";
 
     # -- Miscellaneous --
-    "Mod+W".action.toggle-column-tabbed-display = [ ];
+    "Mod+G".action.toggle-column-tabbed-display = [ ];
     "Mod+T".action.spawn-sh = "pkill -SIGUSR1 wayscriber";
 
     "Mod+Escape" = {
@@ -114,6 +114,7 @@
 
     # "Mod+B".action.spawn-sh = "rofi -show clipboard ...";
     "Mod+B".action.spawn-sh = "noctalia-shell ipc call launcher clipboard";
+    "Mod+W".action.spawn-sh = "noctalia-shell ipc call launcher windows";
 
     "Mod+Shift+P".action.power-off-monitors = [ ];
 
