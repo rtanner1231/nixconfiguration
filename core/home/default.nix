@@ -57,6 +57,8 @@ in
     lsof
     google-chat-linux
     killall
+    google-chrome
+    bruno
   ];
 
   fonts.fontconfig.enable = true;
