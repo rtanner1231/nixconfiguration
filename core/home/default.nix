@@ -59,6 +59,7 @@ in
     killall
     google-chrome
     bruno
+    google-cloud-sdk
   ];
 
   fonts.fontconfig.enable = true;
