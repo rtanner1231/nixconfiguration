@@ -31,6 +31,7 @@
       url = "path:/home/rick/projects/noctalia-calendar";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    apex-ls.url = "path:/home/rick/projects/apex_ls";
     # next-event = {
     #   url = "path:/home/rick/projects/qshell-next-event";
     #   inputs.nixpkgs.follows = "nixpkgs";
