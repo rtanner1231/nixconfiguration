@@ -45,6 +45,7 @@ in
     btop
     vivaldi
     opencode
+    opencode-desktop
     inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
     postman
     libreoffice
