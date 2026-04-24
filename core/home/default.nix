@@ -24,6 +24,7 @@ in
 
   # Basic user packages that are always installed
   home.packages = with pkgs; [
+    # bottles
     firefox
     zoom
     htop
@@ -37,6 +38,7 @@ in
     thunderbird
     postman
     fastfetch
+    onefetch
     jq
     tree
     fastfetch
@@ -61,6 +63,7 @@ in
     google-chrome
     bruno
     google-cloud-sdk
+    tree-sitter
   ];
 
   fonts.fontconfig.enable = true;
