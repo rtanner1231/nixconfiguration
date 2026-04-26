@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   dotfiles = "${config.home.homeDirectory}/dotfiles";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
@@ -21,10 +26,10 @@ in
     defaultEditor = true;
     viAlias = true;
   };
-
+  xdg.configFile."nvim/init.lua".enable = lib.mkForce false;
   xdg.configFile."nvim" = {
     source = create_symlink "${dotfiles}/.config/nvim";
-    recursive = true;
+    # recursive = true;
   };
 
 }
