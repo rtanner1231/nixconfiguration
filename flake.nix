@@ -36,10 +36,14 @@
     #   url = "path:/home/rick/projects/qshell-next-event";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    # dms = {
-    #   url = "github:AvengeMedia/DankMaterialShell/stable";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    mangowm = {
+      url = "github:mangowm/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
     # quickshell = {
     #   url = "git+https://git.outfoxxed.me/quickshell/quickshell";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -50,6 +54,7 @@
       self,
       nixpkgs,
       niri-flake,
+      mangowm,
       ...
     }@inputs:
     let
@@ -63,6 +68,12 @@
           additionalModules = [ niri-flake.nixosModules.niri ];
         }
         { name = "cosmic"; }
+        {
+          name = "mango";
+          additionalModules = [
+            mangowm.nixosModules.mango
+          ];
+        }
       ];
       profiles = [
         {
