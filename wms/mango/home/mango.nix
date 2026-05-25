@@ -12,7 +12,7 @@
     '';
 
     # Mango expects the configuration as a raw string matching config.conf
-    settings = builtins.readFile ./config.conf;
+    extraConfig = builtins.readFile ./config.conf;
   };
 
   # Keep your GTK settings alongside it

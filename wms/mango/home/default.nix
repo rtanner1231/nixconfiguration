@@ -1,9 +1,9 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.dms.homeModules.dank-material-shell
+    ./dms
     inputs.mangowm.hmModules.mango
-../../../core/home
+    ../../../core/home
     ./mango.nix
     ./packages.nix
 
