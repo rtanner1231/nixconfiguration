@@ -6,6 +6,8 @@
     ../../../core/home
     ./mango.nix
     ./packages.nix
+    ./cursor.nix
+    ./calendar.nix
 
   ];
 

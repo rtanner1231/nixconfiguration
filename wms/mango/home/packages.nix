@@ -21,6 +21,9 @@
     wayscriber
     foot
     kitty
+    wlr-randr
+    khal
+    wtype
   ];
 
 }

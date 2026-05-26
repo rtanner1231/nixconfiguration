@@ -7,6 +7,8 @@
     enable = true;
     enableVPN = false;
     enableDynamicTheming = true;
+    enableCalendarEvents = true;
+    enableClipboardPaste = true;
 
     systemd = {
       enable = false;
