@@ -8,6 +8,7 @@
     ./packages.nix
     ./cursor.nix
     ./calendar.nix
+    ./browser.nix
 
   ];
 

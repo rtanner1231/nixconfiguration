@@ -24,6 +24,7 @@
     wlr-randr
     khal
     wtype
+    satty
   ];
 
 }
