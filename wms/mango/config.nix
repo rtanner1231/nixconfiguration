@@ -7,7 +7,17 @@
 {
   services.displayManager.gdm.enable = true;
   services.gvfs.enable = true;
-  services.xserver.enable = false;
+  services.xserver.enable = true;
+
+  services.xserver.displayManager.gdm.wayland=false;
+
+  services.xserver.videoDrivers = ["nvidia"];
+
+ hardware.nvidia= {
+      modesetting.enable=true;
+      open=false;
+      nvidiaSettings=true;
+};
 
   services.gnome.evolution-data-server.enable = true;
   services.gnome.gnome-online-accounts.enable = true;
