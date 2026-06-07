@@ -6,6 +6,12 @@
 }:
 {
   services.displayManager.gdm.enable = true;
+  services.displayManager.gdm.settings = {
+    daemon = {
+      WaylandEnable = false;
+    };
+  };
+  boot.kernelParams = [ "nvidia_drm.fbdev=1" ];
   services.gvfs.enable = true;
   services.xserver.enable = true;
 
