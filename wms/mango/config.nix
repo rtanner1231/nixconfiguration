@@ -5,8 +5,7 @@
   ...
 }:
 {
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.displayManager.lightdm.greeters.slick.enable = true;
+  services.displayManager.gdm.enable = true;
   services.gvfs.enable = true;
   services.xserver.enable = true;
 
@@ -26,13 +25,13 @@
   services.upower.enable = true;
   services.power-profiles-daemon.enable = true;
   hardware.bluetooth.enable = true;
-  security.pam.services.lightdm.enableGnomeKeyring = true;
+  security.pam.services.gdm.enableGnomeKeyring = true;
 
   programs.mango.enable = true;
   programs.mango.addLoginEntry = false;
 
   # Create a custom wrapper for MangoWM so that it sources the system
-  # profile and user profile before starting. This is crucial for LightDM
+  # profile and user profile before starting. This is crucial for GDM
   # and other display managers that might not source `/etc/profile` automatically.
   services.displayManager.sessionPackages = [
     (pkgs.runCommand "mango-wayland-session" {

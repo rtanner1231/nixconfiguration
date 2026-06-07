@@ -26,7 +26,7 @@ in
   home.packages = with pkgs; [
     # bottles
     firefox
-    zoom
+    # zoom
     htop
     nerd-fonts.fira-code
     cargo
