@@ -42,4 +42,7 @@ in
       "x-scheme-handler/unknown" = "smart-browser.desktop";
     };
   };
+
+  # Force overwrite of mimeapps.list to avoid conflicts with existing file
+  xdg.configFile."mimeapps.list".force = true;
 }

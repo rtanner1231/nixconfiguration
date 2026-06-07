@@ -5,11 +5,10 @@
   ...
 }:
 {
-  services.displayManager.gdm.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
   services.gvfs.enable = true;
   services.xserver.enable = true;
-
-  services.xserver.displayManager.gdm.wayland=false;
 
   services.xserver.videoDrivers = ["nvidia"];
 
@@ -27,14 +26,41 @@
   services.upower.enable = true;
   services.power-profiles-daemon.enable = true;
   hardware.bluetooth.enable = true;
-  security.pam.services.gdm.enableGnomeKeyring = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
 
   programs.mango.enable = true;
+  programs.mango.addLoginEntry = false;
 
-  # Add MangoWM to your display manager's session packages
-  # so GDM knows it exists and gives you a login option.
+  # Create a custom wrapper for MangoWM so that it sources the system
+  # profile and user profile before starting. This is crucial for SDDM
+  # because it doesn't automatically source `/etc/profile` in Wayland mode.
   services.displayManager.sessionPackages = [
-    inputs.mangowm.packages.${pkgs.stdenv.hostPlatform.system}.default
+    (pkgs.runCommand "mango-wayland-session" {
+      passthru.providedSessions = [ "mango" ];
+    } ''
+      mkdir -p $out/share/wayland-sessions
+      cat > $out/share/wayland-sessions/mango.desktop <<EOF
+      [Desktop Entry]
+      Name=Mango
+      Comment=Mango Wayland Compositor
+      Exec=${pkgs.writeShellScript "mango-wrapper" ''
+        if [ -f /etc/profile ]; then
+          . /etc/profile
+        fi
+        if [ -f "\$HOME/.profile" ]; then
+          . "\$HOME/.profile"
+        fi
+        
+        # Ensure DBus activation environment is updated
+        if command -v dbus-update-activation-environment >/dev/null 2>&1; then
+          dbus-update-activation-environment --systemd --all
+        fi
+
+        exec ${inputs.mangowm.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/mango
+      ''}
+      Type=Application
+      EOF
+    '')
   ];
 
   environment.systemPackages = with pkgs; [
