@@ -64,6 +64,7 @@ in
     bruno
     google-cloud-sdk
     tree-sitter
+    awscli2
   ];
 
   fonts.fontconfig.enable = true;
