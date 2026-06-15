@@ -9,7 +9,7 @@
   imports = [
     inputs.dms.homeModules.dank-material-shell
     ./settings.nix
-    inputs.dms-plugin-registry.modules.default
+    inputs.dms-plugin-registry.nixosModules.default
   ];
   programs."dank-material-shell" = {
     enable = true;
