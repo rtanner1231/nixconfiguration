@@ -52,6 +52,10 @@
     #   url = "git+https://git.outfoxxed.me/quickshell/quickshell";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+    helium = {
+      url = "github:schembriaiden/helium-browser-nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {

@@ -65,6 +65,7 @@ in
     google-cloud-sdk
     tree-sitter
     awscli2
+    inputs.helium.packages."${stdenv.hostPlatform.system}".default
   ];
 
   fonts.fontconfig.enable = true;
