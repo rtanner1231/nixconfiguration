@@ -2,7 +2,7 @@
 let
   # This inlines the environment selector script and handles dependencies cleanly via Nix
   ns-env-selector = pkgs.writeShellScript "ns-env-selector" ''
-    CONFIG_FILE="$HOME/.config/netsuite_mcp/config.json"
+    CONFIG_FILE="$HOME/.config/netsuite_mcp/state.json"
 
     # Ensure the directory exists
     mkdir -p "$(dirname "$CONFIG_FILE")"
