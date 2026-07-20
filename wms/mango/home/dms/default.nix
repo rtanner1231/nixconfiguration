@@ -37,9 +37,9 @@
     };
   };
 
-  home.packages = [
-    inputs.dms.packages.${pkgs.system}.quickshell
-  ];
+  # home.packages = [
+  #   inputs.dms.packages.${pkgs.system}.quickshell
+  # ];
 
   systemd.user.services.dms.Service.Environment =
     lib.mkForce "PATH=${config.home.profileDirectory}/bin:/run/current-system/sw/bin";
