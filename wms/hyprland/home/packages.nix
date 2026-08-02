@@ -1,15 +1,19 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 {
   home.packages = with pkgs; [
     kitty # Terminal
-    waybar # Status bar
     swaybg # Wallpaper
+    satty
+    brave
     swaynotificationcenter # Notification daemon
     swaylock # Screen locker
     kdePackages.dolphin
+    inputs.noctalia.packages.${pkgs.system}.default
+    kdePackages.kate
   ];
 
 }
