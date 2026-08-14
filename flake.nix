@@ -11,10 +11,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    sfdx = {
-      url = "github:rfaulhaber/sfdx-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # sfdx = {
+    #   url = "github:rfaulhaber/sfdx-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     suitecloud.url = "github:rtanner1231/suitecloud-nix";
     niri-flake = {
       url = "github:sodiboo/niri-flake";

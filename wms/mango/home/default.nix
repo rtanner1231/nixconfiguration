@@ -8,7 +8,7 @@
     ./packages.nix
     ./cursor.nix
     ./calendar.nix
-    ./browser.nix
+    ../../../common/scripts/browser.nix
 
   ];
 

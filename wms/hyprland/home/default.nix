@@ -9,5 +9,7 @@
     ../../../core/home
     ./noctalia
     ./settings
+    # ../../../common/scripts/browser.nix
+    ./smartbrowser.nix
   ];
 }
