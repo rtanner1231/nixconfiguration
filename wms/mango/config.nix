@@ -86,7 +86,7 @@
     snixembed
     evolution
     gnome-control-center
-    inputs.dms.packages.${pkgs.system}.default
+    inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   environment.sessionVariables = {

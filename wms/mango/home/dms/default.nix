@@ -38,14 +38,14 @@
   };
 
   # home.packages = [
-  #   inputs.dms.packages.${pkgs.system}.quickshell
+  #   inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.quickshell
   # ];
 
   systemd.user.services.dms.Service.Environment =
     lib.mkForce "PATH=${config.home.profileDirectory}/bin:/run/current-system/sw/bin";
 
   # home.packages = [
-  #   inputs.dms.packages.${pkgs.system}.quickshell
+  #   inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.quickshell
   # ];
   #
   # # Force the systemd service to see your normal system/user PATH

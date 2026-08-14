@@ -17,7 +17,7 @@ in
     nil # nix LSP
     yaml-language-server
     clang-tools
-    nixfmt-rfc-style # nix formatter
+    nixfmt # nix formatter
     vue-language-server
   ];
 
@@ -25,6 +25,8 @@ in
     enable = true;
     defaultEditor = true;
     viAlias = true;
+    withRuby = false;
+    withPython3 = false;
   };
   xdg.configFile."nvim/init.lua".enable = lib.mkForce false;
   xdg.configFile."nvim" = {

@@ -59,8 +59,8 @@
     snixembed
     evolution
     gnome-control-center
-    # inputs.wayscriber.packages.${pkgs.system}.default
-    # inputs.wayscriber.packages.${pkgs.system}.wayscriber-configurator
+    # inputs.wayscriber.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # inputs.wayscriber.packages.${pkgs.stdenv.hostPlatform.system}.wayscriber-configurator
   ];
 
   environment.sessionVariables = {

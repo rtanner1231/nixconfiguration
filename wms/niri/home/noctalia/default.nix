@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }:
 let
-  calendarPlugin = inputs.noctalia-calendar.packages.${pkgs.system}.default;
+  calendarPlugin = inputs.noctalia-calendar.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   # import the home manager module
@@ -12,7 +12,7 @@ in
   ];
 
   # xdg.configFile."noctalia/plugins/next-event".source =
-  #   inputs.next-event.packages.${pkgs.system}.default;
+  #   inputs.next-event.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
   home.packages = [ calendarPlugin ];
 

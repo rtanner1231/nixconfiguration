@@ -12,7 +12,7 @@
     swaynotificationcenter # Notification daemon
     swaylock # Screen locker
     kdePackages.dolphin
-    inputs.noctalia.packages.${pkgs.system}.default
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     kdePackages.kate
   ];
 
