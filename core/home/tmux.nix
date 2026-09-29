@@ -79,6 +79,9 @@ in
       set -g status-style 'bg=default' # transparent background
 
       bind e display-popup -E -w 40 -h 10 "${ns-env-selector}"
+
+      set -g extended-keys on
+      set -as terminal-features 'xterm*:extkeys'
     '';
   };
 }

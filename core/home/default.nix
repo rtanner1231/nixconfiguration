@@ -30,6 +30,7 @@ in
     htop
     nerd-fonts.fira-code
     cargo
+    xkill
     fd
     ripgrep
     prefetch-npm-deps
@@ -46,12 +47,12 @@ in
     slack
     btop
     vivaldi
-    opencode
-    opencode-desktop
+    # opencode
+    # opencode-desktop
     inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
     postman
     libreoffice
-    soapui
+    # soapui
     imagemagick
     mission-center
     filezilla
