@@ -2,6 +2,7 @@
 {
   imports = [
     inputs.noctalia.homeModules.default
+    ./packages.nix
   ];
 
   programs.noctalia = {
@@ -13,7 +14,11 @@
           height = 30;
           modules_left = [ "workspaces" ];
           modules_center = [ "clock" ];
-          modules_right = [ "tray" "battery" "network" ];
+          modules_right = [
+            "tray"
+            "battery"
+            "network"
+          ];
         }
       ];
     };

@@ -27,6 +27,7 @@
         (onSpecialWorkspace "opencode" "opencode-desktop")
         (onSpecialWorkspace "thunderbird" "thunderbird")
         (onSpecialWorkspace "firefox" "firefox")
+        (onSpecialWorkspace "bruno" "bruno")
       ];
 
       bind = [
@@ -34,6 +35,7 @@
         (bind "SUPER + CTRL + A" (special-toggle "opencode"))
         (bind "SUPER + CTRL + T" (special-toggle "thunderbird"))
         (bind "SUPER + CTRL + F" (special-toggle "firefox"))
+        (bind "SUPER + CTRL + B" (special-toggle "bruno"))
       ];
     };
 }

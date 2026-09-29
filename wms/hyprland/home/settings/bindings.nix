@@ -7,6 +7,11 @@
 }:
 {
 
+  # wayland.windowManager.hyprland.settings.bindm = [
+  #   "SUPER, mouse:272, movewindow"
+  #   "SUPER, mouse:273, resizewindow"
+  # ];
+
   wayland.windowManager.hyprland.settings.bind =
     let
       # audio
@@ -17,6 +22,9 @@
       brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
       applauncher = "${pkgs.fuzzel}/bin/fuzzel";
       term = "${pkgs.foot}/bin/foot";
+
+      kitty = "${pkgs.kitty}/bin/kitty";
+      yazi = "${pkgs.yazi}/bin/yazi";
 
       # utility
       hyprlock = "${pkgs.hyprlock}/bin/hyprlock";
@@ -39,6 +47,13 @@
         _args = [
           key
           (lua action)
+        ];
+      };
+      bindm = key: action: {
+        _args = [
+          key
+          (lua action)
+          (lua "{ mouse = true }")
         ];
       };
 
@@ -68,6 +83,24 @@
       (bind "SUPER + U" (exec "ghostty"))
       (bind "SUPER + Q" "hl.dsp.window.close()")
 
+      # (bind "SUPER + Y" (exec "[float; size 80% 60%; center] ${kitty} ${yazi}"))
+
+      (bind "SUPER + Y" (
+        exec "[float; size 1500 900; center; animation popin 80%] ${kitty} -o remember_window_size=no -o window_padding_width=12 ${yazi}"
+      ))
+
+      (bindm "SUPER + mouse:272" "hl.dsp.window.drag()")
+      (bindm "SUPER + mouse:273" "hl.dsp.window.resize()")
+
+      (bind "SUPER + mouse_down" "hl.dsp.focus({ workspace = \"m+1\" })")
+      (bind "SUPER + mouse_up" "hl.dsp.focus({ workspace = \"m-1\" })")
+
+      (bind "SUPER + ALT + mouse_down" (exec "hyprctl keyword cursor:zoom_factor 1.25"))
+      (bind "SUPER + ALT + mouse_up" (exec "hyprctl keyword cursor:zoom_factor 1.0"))
+
+      # (bind "SUPER + ALT + mouse_down" "hl.dsp.cursor_zoom({ mode = \"mult\", zoom_level = \"1.1\" })")
+      # (bind "SUPER + ALT + mouse_up" "hl.dsp.cursor_zoom({ mode = \"mult\", zoom_level = \"0.9\" })")
+
       (bind "SUPER + 1" (movews "1"))
       (bind "SUPER + 2" (movews "2"))
       (bind "SUPER + 3" (movews "3"))
@@ -95,7 +128,31 @@
       (bind "SUPER + K" (focusdr "up"))
       (bind "SUPER + L" (focusdr "right"))
 
+      # (bind "SUPER + H" (layout_bind ''
+      #   {
+      #       scrolling = hl.dsp.exec_cmd("hyprctl dispatch cyclenext prev"),
+      #       dwindle   = hl.dsp.focus({ direction = "left" }),
+      #       monocle   = hl.dsp.focus({ direction = "left" }),
+      #       master    = hl.dsp.focus({ direction = "left" })
+      #   }
+      # ''))
+      #
+      # (bind "SUPER + L" (layout_bind ''
+      #   {
+      #       scrolling = hl.dsp.exec_cmd("hyprctl dispatch cyclenext"),
+      #       dwindle   = hl.dsp.focus({ direction = "right" }),
+      #       monocle   = hl.dsp.focus({ direction = "right" }),
+      #       master    = hl.dsp.focus({ direction = "right" })
+      #   }
+      # ''))
+
+      (bind "SUPER + SHIFT + L" ''hl.dsp.workspace.move({monitor="r"})'')
+      (bind "SUPER + SHIFT + H" ''hl.dsp.workspace.move({monitor="l"})'')
+
+      (bind "ALT + TAB" (exec "noctalia msg window-switcher"))
+
       (bind "Print" (exec "noctalia msg screenshot-region"))
+      (bind "SUPER + Print" (exec "screenshotannotate"))
 
       (bind "SUPER + F" ''hl.dsp.window.fullscreen({ action = "toggle", mode = "maximized" })'')
       (bind "SUPER + SHIFT + F" ''hl.dsp.window.fullscreen({ action = "toggle", mode = "fullscreen" })'')
@@ -122,7 +179,10 @@
       (bind "SUPER + D" (exec "noctalia msg panel-toggle launcher"))
       (bind "SUPER + B" (exec "noctalia msg panel-toggle clipboard"))
 
-      (bind "SUPER + TAB" ''
+      (bind "SUPER + W" ''hl.dsp.layout("colresize 1.0")'')
+      (bind "SUPER + SHIFT + W" ''hl.dsp.layout("colresize 0.5")'')
+
+      (bind "SUPER + SHIFT + TAB" ''
                     function ()
             local layouts     = { "scrolling", "dwindle", "master", "monocle" }
             local workspace   = hl.get_active_workspace()

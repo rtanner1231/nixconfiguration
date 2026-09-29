@@ -10,6 +10,14 @@
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     pkgs.adwaita-icon-theme
   ];
+  # programs.gpu-screen-recorder.enable = true;
+
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      nvidia-vaapi-driver
+    ];
+  };
 
   # Required to make the SDF cli work
   services.gvfs.enable = true;

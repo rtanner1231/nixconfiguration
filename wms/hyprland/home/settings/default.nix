@@ -5,5 +5,6 @@
     ./bindings.nix
     ./autostart.nix
     ./specialWorkspace.nix
+    ./windowRules.nix
   ];
 }

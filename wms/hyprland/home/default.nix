@@ -11,5 +11,6 @@
     ./settings
     # ../../../common/scripts/browser.nix
     ./smartbrowser.nix
+    ../../../common/wayland/screenshot
   ];
 }
