@@ -28,6 +28,7 @@
         (onSpecialWorkspace "thunderbird" "thunderbird")
         (onSpecialWorkspace "firefox" "firefox")
         (onSpecialWorkspace "bruno" "bruno")
+        (onSpecialWorkspace "gchat" "google-chat-linux")
       ];
 
       bind = [
@@ -36,6 +37,7 @@
         (bind "SUPER + CTRL + T" (special-toggle "thunderbird"))
         (bind "SUPER + CTRL + F" (special-toggle "firefox"))
         (bind "SUPER + CTRL + B" (special-toggle "bruno"))
+        (bind "SUPER + CTRL + C" (special-toggle "gchat"))
       ];
     };
 }

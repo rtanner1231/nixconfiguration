@@ -32,10 +32,10 @@
       lm_sensors
       docker-compose
       python3
-      pinnedPkgs.opencode
-      pinnedPkgs.opencode-desktop
-      # opencode
-      # opencode-desktop
+      # pinnedPkgs.opencode
+      # pinnedPkgs.opencode-desktop
+      opencode
+      opencode-desktop
       inputs.apex-ls.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 }

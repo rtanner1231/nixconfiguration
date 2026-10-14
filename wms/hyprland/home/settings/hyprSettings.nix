@@ -61,6 +61,7 @@
             "GBM_BACKEND,nvidia-drm"
             "NVD_BACKEND,direct"
             "ELECTRON_OZONE_PLATFORM_HINT,auto"
+            "XDG_MENU_PREFIX,plasma-"
           ];
 
           cursor = {
