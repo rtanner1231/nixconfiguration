@@ -39,6 +39,6 @@
 
   # For screen sharing
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
 
 }

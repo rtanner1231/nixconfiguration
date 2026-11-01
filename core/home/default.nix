@@ -56,7 +56,10 @@ in
     imagemagick
     mission-center
     filezilla
-    obsidian
+    (obsidian.override {
+      electron = electron_42;
+    })
+    # obsidian
     gimp
     lsof
     google-chat-linux

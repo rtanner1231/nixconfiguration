@@ -10,6 +10,7 @@
 {
   imports = [
     # Include the results of the hardware scan.
+    # ./temp-overlays.nix
     ./boot.nix
     ./services.nix
     ./packages.nix

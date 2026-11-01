@@ -11,7 +11,7 @@
 
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.systemd.enable = true;
+  # boot.initrd.systemd.enable = true;
 
   boot.loader.grub.theme = pkgs.stdenv.mkDerivation {
     pname = "distro-grub-themes";
