@@ -20,6 +20,7 @@
     ./rclone.nix # must be set up using rclone config
     ./distrobox.nix
     # ./vm.nix
+    ./tailscale.nix
   ];
 
 }

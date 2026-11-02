@@ -77,6 +77,8 @@ in
       set -g status-position bottom
       set -g status-left-length 200
       set -g status-style 'bg=default' # transparent background
+      set -g popup-style "bg=default,fg=default"
+      set -g popup-border-style "bg=default,fg=default"
 
       bind e display-popup -E -w 40 -h 10 "${ns-env-selector}"
 
