@@ -6,6 +6,6 @@
   networking.firewall.trustedInterfaces = [ "tailscale0" ];
 
   # (Optional) Prevent your machine from suspending while away from your desk
-  systemd.targets.sleep.enable = false;
-  systemd.targets.suspend.enable = false;
+  # systemd.targets.sleep.enable = false;
+  # systemd.targets.suspend.enable = false;
 }

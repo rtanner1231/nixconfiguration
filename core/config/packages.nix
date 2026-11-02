@@ -36,6 +36,6 @@
       # pinnedPkgs.opencode-desktop
       opencode
       opencode-desktop
-      inputs.apex-ls.packages.${pkgs.stdenv.hostPlatform.system}.default
+      # inputs.apex-ls.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 }
