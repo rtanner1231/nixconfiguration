@@ -7,8 +7,20 @@
     ../../wms/${wm}
   ];
 
+  zramSwap = {
+     enable=true;
+     algorithm="zstd";
+     memoryPercent=50;
+  };
+
+  services.earlyoom = {
+     enable=true;
+     freeMemThreshold = 5;
+     freeSwapThreshold = 10;
+  };
+
   rclonebackup = {
-    enable = true;
+    enable = false;
     remoteName = "GDrive";
     remotePath = profile.name;
     excludedPaths = [
