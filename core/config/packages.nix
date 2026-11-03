@@ -36,6 +36,8 @@
       # pinnedPkgs.opencode-desktop
       opencode
       opencode-desktop
+      openssl
+      sqlite
       # inputs.apex-ls.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 }
