@@ -1,8 +1,5 @@
 { pkgs, lib, ... }:
 {
-  home.packages = with pkgs; [
-    foot
-  ];
 
   services.hyprpaper.enable = lib.mkForce false;
   services.cliphist.allowImages = lib.mkForce false;
