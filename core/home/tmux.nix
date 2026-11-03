@@ -1,5 +1,11 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  profile,
+  ...
+}:
 let
+  isL2 = profile.name == "l2";
   # This inlines the environment selector script and handles dependencies cleanly via Nix
   ns-env-selector = pkgs.writeShellScript "ns-env-selector" ''
     CONFIG_FILE="$HOME/.config/netsuite_mcp/state.json"
@@ -84,6 +90,10 @@ in
 
       set -g extended-keys on
       set -as terminal-features 'xterm*:extkeys'
+      ${lib.optionalString isL2 ''
+        # Cap scrollback history on low-memory profile (overrides tmux-sensible's 50000)
+        set -g history-limit 5000
+      ''}
     '';
   };
 }

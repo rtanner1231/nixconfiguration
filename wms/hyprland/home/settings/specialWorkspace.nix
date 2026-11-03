@@ -1,43 +1,30 @@
 { lib, ... }:
+let
+  lua = lib.generators.mkLuaInline;
+  bind = key: action: {
+    _args = [
+      key
+      (lua action)
+    ];
+  };
+  lazySpecialToggle = name: command: ''
+    function()
+      if #hl.get_workspace_windows("special:${name}") == 0 then
+        hl.exec_cmd("[workspace special:${name} silent] ${command}")
+      end
+      hl.dispatch(hl.dsp.workspace.toggle_special("${name}"))
+    end
+  '';
+in
 {
-  wayland.windowManager.hyprland.settings =
-    let
-      lua = lib.generators.mkLuaInline;
-      on = event: body: {
-        _args = [
-          event
-          (lua "function() ${body} end")
-        ];
-      };
-      exec = cmd: ''hl.exec_cmd("${cmd}")'';
-      specialWorkspace = name: command: (exec "[workspace special:${name} silent] ${command}");
-      onSpecialWorkspace = name: command: (on "hyprland.start" "${specialWorkspace name command}");
-      bind = key: action: {
-        _args = [
-          key
-          (lua action)
-        ];
-      };
-      special-toggle = name: ''hl.dsp.workspace.toggle_special "${name}"'';
-
-    in
-    {
-      on = [
-        (onSpecialWorkspace "obsidian" "obsidian")
-        (onSpecialWorkspace "opencode" "opencode-desktop")
-        (onSpecialWorkspace "thunderbird" "thunderbird")
-        (onSpecialWorkspace "firefox" "firefox")
-        (onSpecialWorkspace "bruno" "bruno")
-        (onSpecialWorkspace "gchat" "google-chat-linux")
-      ];
-
-      bind = [
-        (bind "SUPER + CTRL + O" (special-toggle "obsidian"))
-        (bind "SUPER + CTRL + A" (special-toggle "opencode"))
-        (bind "SUPER + CTRL + T" (special-toggle "thunderbird"))
-        (bind "SUPER + CTRL + F" (special-toggle "firefox"))
-        (bind "SUPER + CTRL + B" (special-toggle "bruno"))
-        (bind "SUPER + CTRL + C" (special-toggle "gchat"))
-      ];
-    };
+  wayland.windowManager.hyprland.settings = {
+    bind = [
+      (bind "SUPER + CTRL + O" (lazySpecialToggle "obsidian" "obsidian"))
+      (bind "SUPER + CTRL + A" (lazySpecialToggle "opencode" "opencode-desktop"))
+      (bind "SUPER + CTRL + T" (lazySpecialToggle "thunderbird" "thunderbird"))
+      (bind "SUPER + CTRL + F" (lazySpecialToggle "firefox" "firefox"))
+      (bind "SUPER + CTRL + B" (lazySpecialToggle "bruno" "bruno"))
+      (bind "SUPER + CTRL + C" (lazySpecialToggle "gchat" "google-chat-linux"))
+    ];
+  };
 }

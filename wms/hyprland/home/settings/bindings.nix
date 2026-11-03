@@ -3,6 +3,7 @@
   inputs,
   config,
   lib,
+  profile,
   ...
 }:
 {
@@ -14,6 +15,7 @@
 
   wayland.windowManager.hyprland.settings.bind =
     let
+      isL2 = profile.name == "l2";
       # audio
       wpctl = "${pkgs.wireplumber}/bin/wpctl";
       playerctl = "${pkgs.playerctl}/bin/playerctl";
@@ -24,7 +26,13 @@
       term = "${pkgs.foot}/bin/foot";
 
       kitty = "${pkgs.kitty}/bin/kitty";
+      ghostty = "${pkgs.ghostty}/bin/ghostty";
       yazi = "${pkgs.yazi}/bin/yazi";
+      yaziCmd =
+        if isL2 then
+          "[float; size 1500 900; center; animation popin 80%] ${ghostty} --window-padding-x=12 --window-padding-y=12 -e ${yazi}"
+        else
+          "[float; size 1500 900; center; animation popin 80%] ${kitty} -o remember_window_size=no -o window_padding_width=12 ${yazi}";
 
       # utility
       hyprlock = "${pkgs.hyprlock}/bin/hyprlock";
@@ -86,7 +94,7 @@
       # (bind "SUPER + Y" (exec "[float; size 80% 60%; center] ${kitty} ${yazi}"))
 
       (bind "SUPER + Y" (
-        exec "[float; size 1500 900; center; animation popin 80%] ${kitty} -o remember_window_size=no -o window_padding_width=12 ${yazi}"
+        exec yaziCmd
       ))
 
       (bindm "SUPER + mouse:272" "hl.dsp.window.drag()")
