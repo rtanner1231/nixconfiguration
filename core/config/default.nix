@@ -21,6 +21,7 @@
     ./distrobox.nix
     # ./vm.nix
     ./tailscale.nix
+    # ./temp.nix
   ];
 
 }

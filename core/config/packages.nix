@@ -10,13 +10,30 @@
       pinnedPkgs =
         import
           (builtins.fetchTarball {
-            url = "https://github.com/NixOS/nixpkgs/archive/d91a239ca0118ff10ee22ba54f48929c38ab8114.tar.gz";
-            sha256 = "1dwsci1a9d9vib6cjx0kq1zs46vxbn1j1sfd3ly98m708c9w1amr";
+            url = "https://github.com/NixOS/nixpkgs/archive/3e662c7cafceb2a65f612e1da9dd39f82eb39ad0.tar.gz";
+            sha256 = "0px08frimcw464pl7k3jscr8c891diyxw7h1qm5vacdx7p2f8xbr";
           })
           {
             config = config.nixpkgs.config;
             system = pkgs.stdenv.hostPlatform.system;
           };
+      opencodePackages = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system};
+      opencodePkg = opencodePackages.opencode.override (prev: {
+        node_modules = prev.node_modules.override {
+          hash = "sha256-/P9H/srrpVdKB8ylPJPqt1Ouu6e0/chxsGktqfu6bS8=";
+        };
+      });
+      opencodeDesktopPkg =
+        (opencodePackages.opencode-desktop.override {
+          opencode = opencodePkg;
+        }).overrideAttrs
+          (old: {
+            buildPhase =
+              builtins.replaceStrings
+                [ ''export OPENCODE_CLI_DIST="$TMPDIR/desktop-cli"'' ]
+                [ ''export OPENCODE_CLI_DIST="$PWD/../cli/dist"'' ]
+                old.buildPhase;
+          });
     in
     with pkgs;
     [
@@ -32,10 +49,12 @@
       lm_sensors
       docker-compose
       python3
-      # pinnedPkgs.opencode
-      # pinnedPkgs.opencode-desktop
-      opencode
-      opencode-desktop
+      pinnedPkgs.opencode
+      pinnedPkgs.opencode-desktop
+      # opencodePkg
+      # opencodeDesktopPkg
+      # opencode
+      # opencode-desktop
       openssl
       sqlite
       # inputs.apex-ls.packages.${pkgs.stdenv.hostPlatform.system}.default
