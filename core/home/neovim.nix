@@ -12,7 +12,7 @@ in
   home.packages = with pkgs; [
     # Language Servers
     lua-language-server
-    typescript-language-server
+    vtsls
     vue-language-server
     bash-language-server
     sqls
