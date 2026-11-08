@@ -45,18 +45,16 @@
       clang
       libsecret
       seahorse
-      # inputs.sfdx.packages.${pkgs.stdenv.hostPlatform.system}.default
       lm_sensors
       docker-compose
       python3
-      pinnedPkgs.opencode
-      pinnedPkgs.opencode-desktop
+      # pinnedPkgs.opencode
+      # pinnedPkgs.opencode-desktop
       # opencodePkg
       # opencodeDesktopPkg
-      # opencode
-      # opencode-desktop
+      opencode
+      opencode-desktop
       openssl
       sqlite
-      # inputs.apex-ls.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 }

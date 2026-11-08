@@ -39,6 +39,7 @@ in
     escapeTime = 50;
     mouse = true;
     keyMode = "vi";
+    terminal = "tmux-256color";
 
     # Set the prefix key to Ctrl + Space
     prefix = "C-Space";

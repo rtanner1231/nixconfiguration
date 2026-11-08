@@ -11,10 +11,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    # sfdx = {
-    #   url = "github:rfaulhaber/sfdx-nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     suitecloud.url = "github:rtanner1231/suitecloud-nix";
     niri-flake = {
       url = "github:sodiboo/niri-flake";
@@ -31,7 +27,6 @@
       url = "path:/home/rick/projects/noctalia-calendar";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # apex-ls.url = "path:/home/rick/projects/apex_ls";
     # next-event = {
     #   url = "path:/home/rick/projects/qshell-next-event";
     #   inputs.nixpkgs.follows = "nixpkgs";

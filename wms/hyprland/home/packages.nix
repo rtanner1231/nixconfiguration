@@ -8,7 +8,7 @@
     kitty # Terminal
     swaybg # Wallpaper
     satty
-    brave
+    # brave
     swaynotificationcenter # Notification daemon
     swaylock # Screen locker
     kdePackages.dolphin
