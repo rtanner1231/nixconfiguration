@@ -54,6 +54,7 @@
       # opencodeDesktopPkg
       opencode
       opencode-desktop
+      uv
       openssl
       sqlite
     ];
