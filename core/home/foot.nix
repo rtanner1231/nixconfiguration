@@ -17,10 +17,9 @@
         # font = "JetBrainsMono Nerd Font:size=11, Noto Color Emoji:size=11";
 
         # DPI handling:
-        # "auto" (default) or "yes" sizes via physical DPI.
-        # "no" scales strictly according to your Wayland compositor's fractional scale.
-        # If text still feels too small on HiDPI displays, set dpi-aware = "no".
-        dpi-aware = "yes";
+        # "yes" sizes via physical monitor DPI (~157 DPI on this panel, which makes fonts ~1.6x larger).
+        # "no" (foot's default) scales according to the Wayland compositor's scale factor (96 DPI base).
+        dpi-aware = "no";
 
         # Window padding (Horizontal x Vertical in pixels)
         pad = "8x8";
@@ -42,12 +41,11 @@
       };
 
       url = {
-        # Allows clicking URLs with a key combo
+        # Allows opening URLs in URL mode
         launch = "${pkgs.xdg-utils}/bin/xdg-open \${url}";
-        underline-when-hover = "yes";
       };
 
-      colors = {
+      colors-dark = {
         # Opacity (1.0 = solid opaque, lowest memory overhead)
         alpha = 1.0;
       };
